@@ -106,6 +106,13 @@
     <!-- <Widget>
       <b-row>
         <b-col>
+          <CSVDownload />
+        </b-col>
+      </b-row>
+    </Widget> -->
+    <!-- <Widget>
+      <b-row>
+        <b-col>
           <TreeMap />
         </b-col>
       </b-row>
@@ -122,6 +129,7 @@ import Widget from '@/components/Widget/Widget';
 import Charts from '../../pages/Charts/Charts';
 import Whisker from '../../components/Whisker';
 import Scatter from '../../components/Scatter';
+import CSVDownload from '../../components/CSVDownload';
 // import TreeMap from '../../components/charts/TreeMap'
 // import LoginCamera from '../../components/Cameras/LoginCamera'
 // import { Chart } from 'highcharts-vue';
@@ -134,7 +142,8 @@ export default {
     // TimelineComponent
     Charts,
     Whisker,
-    Scatter
+    Scatter,
+    CSVDownload,
     // TreeMap
   },
   data() {
