@@ -22,60 +22,154 @@
         class="chatSidebarUserGroup"
       >
         <b-list-group-item
-          v-for="(conversation, index) in todayConversations.filter(filterConversations)"
-          :key="conversation.name"
-          :class="{active: index === 0 && chatNotificationMessageState === messageStates.NEW}"
+          v-for="(emotion, _id) in emotions"
+          :key="_id"
           @click="(e) => openMessages(conversation, index)"
         >
-          <i :class="`fa fa-circle float-right text-${conversation.status}`" />
-          <span
-            v-if="index === 0 && chatNotificationMessageState === messageStates.NEW"
-            class="badge badge-danger badge-pill float-right animated bounceInDown"
-          >3</span>
-          <span class="thumb-sm float-left mr">
-            <img
-              class="rounded-circle"
-              :src="conversation.image"
-              alt="..."
-            >
-          </span>
           <div>
-            <h6 class="messageSender">
-              {{ conversation.name }}
-            </h6>
-            <p class="messagePreview">
-              {{ conversation.lastMessage }}
-            </p>
+            <span class="thumb-sm float-left">
+              <img
+                class="rounded-circle"
+                :src="conversation.image"
+                alt="..."
+              >
+            </span>
           </div>
-        </b-list-group-item>
-      </b-list-group>
-      <h5 class="navTitle">
-        LAST WEEK
-      </h5>
-      <b-list-group
-        id="chat-sidebar-user-group"
-        class="chatSidebarUserGroup"
-      >
-        <b-list-group-item
-          v-for="conversation in lastWeekConversations.filter(filterConversations)"
-          :key="conversation.name"
-          @click="(e) => openMessages(conversation)"
-        >
-          <i :class="`fa fa-circle float-right text-${conversation.status}`" />
-          <span class="thumb-sm float-left mr">
-            <img
-              class="rounded-circle"
-              :src="conversation.image"
-              alt="..."
-            >
-          </span>
           <div>
             <h6 class="messageSender">
-              {{ conversation.name }}
+              {{ emotion.userId }}
             </h6>
-            <p class="messagePreview">
-              {{ conversation.lastMessage }}
-            </p>
+            <div
+              style=" padding-left: 1.7em; padding-bottom: 2em; width: 100%;"
+              class="fw-semi-bold p-4 pl-5"
+            >
+              <b-row>
+                <b-col
+                  lg="1.5"
+                  xs="12"
+                >
+                  <div>
+                    <img
+                      class="emoji"
+                      width="70px"
+                      src="/img/netural.006cc26d.png"
+                      alt=""
+                    >
+                    <h3 class="text-center">
+                      <strong> {{ emotion.angry }} </strong>
+                    </h3>
+                  </div>
+                </b-col>
+                <b-col
+                  lg="1.5"
+                  xs="12"
+                >
+                  <div>
+                    <div>
+                      <img
+                        class="emoji"
+                        width="70px"
+                        src="/img/netural.006cc26d.png"
+                        alt=""
+                      >
+                      <h3 class="text-center">
+                        <strong>13%</strong>
+                      </h3>
+                    </div>
+                  </div>
+                </b-col>
+                <b-col
+                  lg="1.5"
+                  xs="12"
+                >
+                  <div>
+                    <div>
+                      <img
+                        class="emoji"
+                        width="70px"
+                        src="/img/netural.006cc26d.png"
+                        alt=""
+                      >
+                      <h3 class="text-center">
+                        <strong>33%</strong>
+                      </h3>
+                    </div>
+                  </div>
+                </b-col>
+                <b-col
+                  lg="1.5"
+                  xs="12"
+                >
+                  <div>
+                    <div>
+                      <img
+                        class="emoji"
+                        width="70px"
+                        src="/img/netural.006cc26d.png"
+                        alt=""
+                      >
+                      <h3 class="text-center">
+                        <strong>7%</strong>
+                      </h3>
+                    </div>
+                  </div>
+                </b-col>
+                <b-col
+                  lg="1.5"
+                  xs="12"
+                >
+                  <div>
+                    <div>
+                      <img
+                        class="emoji"
+                        width="70px"
+                        src="/img/netural.006cc26d.png"
+                        alt=""
+                      >
+                      <h3 class="text-center">
+                        <strong>28%</strong>
+                      </h3>
+                    </div>
+                  </div>
+                </b-col>
+                <b-col
+                  lg="1.5"
+                  xs="1"
+                >
+                  <div>
+                    <div>
+                      <img
+                        class="emoji"
+                        width="70px"
+                        src="/img/netural.006cc26d.png"
+                        alt=""
+                      >
+                      <h3 class="text-center">
+                        <strong>3%</strong>
+                      </h3>
+                    </div>
+                  </div>
+                </b-col>
+                <b-col
+                  lg="1.5"
+                  xs="12"
+                >
+                  <div>
+                    <div>
+                      <img
+                        class="emoji"
+                        width="70px"
+                        src="/img/netural.006cc26d.png"
+                        alt=""
+                      >
+                      <h3 class="text-center">
+                        <strong>2%</strong>
+                      </h3>
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
           </div>
         </b-list-group-item>
       </b-list-group>
@@ -87,7 +181,7 @@
           {{ conversation.name }}
         </a>
       </h6>
-      <b-list-group>
+      <!-- <b-list-group>
         <b-list-group-item
           v-for="message in conversation.messages"
           :key="message.id"
@@ -111,15 +205,15 @@
             {{ message.text }}
           </div>
         </b-list-group-item>
-      </b-list-group>
-      <footer class="chatFooter form-group">
+      </b-list-group> -->
+      <!-- <footer class="chatFooter form-group">
         <input
           class="form-control fs-mini"
           type="text"
           placeholder="Type your message"
           @keydown="addMessage"
         >
-      </footer>
+      </footer> -->
     </div>
   </aside>
 </template>
@@ -127,6 +221,7 @@
 <script>
 import Vue from 'vue';
 import { mapState, mapActions } from 'vuex';
+import { FACE_DETECTING_SUBSCRIPTIOM, EMOTIONS_QUERY } from '../../graphql/Mutations'
 
 import a1 from '../../assets/people/a1.jpg';
 import a2 from '../../assets/people/a2.jpg';
@@ -140,68 +235,69 @@ export default {
   name: 'Chat',
   data() {
     return {
+      // emotions: [],
       messageStates: MessageStates,
-      todayConversations: [{
-        name: 'Chris Gray',
-        status: 'success',
-        lastMessage: 'Hey! What\'s up? So many times since we',
-        image: a2,
-        messages: [{
-          id: 0,
-          text: 'Hey! What\'s up?',
-        }, {
-          id: 1,
-          text: 'Are you there?',
-        }, {
-          id: 2,
-          text: 'Let me know when you come back.',
-        }, {
-          id: 3,
-          text: 'I am here!',
-          fromMe: true,
-        }],
-      }, {
-        name: 'Jamey Brownlow',
-        status: 'gray-light',
-        lastMessage: 'Good news coming tonight. Seems they agreed to proceed',
-        image: a1,
-      }, {
-        name: 'Livia Walsh',
-        status: 'danger',
-        lastMessage: 'Check out my latest email plz!',
-        image: a1,
-      }, {
-        name: 'Jaron Fitzroy',
-        status: 'gray-light',
-        lastMessage: 'What about summer break?',
-        image: a1,
-      }, {
-        name: 'Mike Lewis',
-        status: 'success',
-        lastMessage: 'Just ain\'t sure about the weekend now. 90% I\'ll make it.',
-        image: a4,
-      }],
-      lastWeekConversations: [{
-        name: 'Freda Edison',
-        status: 'gray-light',
-        lastMessage: 'Hey what\'s up? Me and Monica going for a lunch somewhere. Wanna join?',
-        image: a6,
-      }, {
-        name: 'Livia Walsh',
-        status: 'success',
-        lastMessage: 'Check out my latest email plz!',
-        image: a5,
-      }, {
-        name: 'Jaron Fitzroy',
-        status: 'warning',
-        lastMessage: 'What about summer break?',
-        image: a3,
-      }, {
-        name: 'Mike Lewis',
-        status: 'gray-light',
-        lastMessage: 'Just ain\'t sure about the weekend now. 90% I\'ll make it.',
-        image: a1,
-      }],
+      // todayConversations: [{
+      //   name: 'Chris Gray',
+      //   status: 'success',
+      //   lastMessage: 'Hey! What\'s up? So many times since we',
+      //   image: a2,
+      //   // messages: [{
+      //   //   id: 0,
+      //   //   text: 'Hey! What\'s up?',
+      //   // }, {
+      //   //   id: 1,
+      //   //   text: 'Are you there?',
+      //   // }, {
+      //   //   id: 2,
+      //   //   text: 'Let me know when you come back.',
+      //   // }, {
+      //   //   id: 3,
+      //   //   text: 'I am here!',
+      //   //   fromMe: true,
+      //   // }],
+      // }, {
+      //   name: 'Jamey Brownlow',
+      //   status: 'gray-light',
+      //   lastMessage: 'Good news coming tonight. Seems they agreed to proceed',
+      //   image: a1,
+      // }, {
+      //   name: 'Livia Walsh',
+      //   status: 'danger',
+      //   lastMessage: 'Check out my latest email plz!',
+      //   image: a1,
+      // }, {
+      //   name: 'Jaron Fitzroy',
+      //   status: 'gray-light',
+      //   lastMessage: 'What about summer break?',
+      //   image: a1,
+      // }, {
+      //   name: 'Mike Lewis',
+      //   status: 'success',
+      //   lastMessage: 'Just ain\'t sure about the weekend now. 90% I\'ll make it.',
+      //   image: a4,
+      // }],
+      // lastWeekConversations: [{
+      //   name: 'Freda Edison',
+      //   status: 'gray-light',
+      //   lastMessage: 'Hey what\'s up? Me and Monica going for a lunch somewhere. Wanna join?',
+      //   image: a6,
+      // }, {
+      //   name: 'Livia Walsh',
+      //   status: 'success',
+      //   lastMessage: 'Check out my latest email plz!',
+      //   image: a5,
+      // }, {
+      //   name: 'Jaron Fitzroy',
+      //   status: 'warning',
+      //   lastMessage: 'What about summer break?',
+      //   image: a3,
+      // }, {
+      //   name: 'Mike Lewis',
+      //   status: 'gray-light',
+      //   lastMessage: 'Just ain\'t sure about the weekend now. 90% I\'ll make it.',
+      //   image: a1,
+      // }],
       chatMessageOpened: true,
       conversation: Object,
       searchValue: '',
@@ -248,9 +344,25 @@ export default {
   computed: {
     ...mapState('layout', ['chatOpen', 'chatNotificationMessageState']),
   },
-  // mounted: {
-  //   openMessages
-  // }
+  apollo: {
+    emotions: {
+      query: EMOTIONS_QUERY,
+      subscribeToMore: {
+        document: FACE_DETECTING_SUBSCRIPTIOM,
+        updateQuery: (previousData, { subscriptionData }) => {
+          return {
+            emotions: [
+              ...previousData.emotions,
+              ...subscriptionData.data.faceDetected
+            ]
+          }
+        }
+      }
+    }
+  },
+  mounted() {
+    console.log('Am here', this.emotions)
+  }
 };
 </script>
 

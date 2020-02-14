@@ -35,7 +35,6 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    redirect: '/reset',
     component: Login,
   },
   {

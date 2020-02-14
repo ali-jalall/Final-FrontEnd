@@ -19,6 +19,7 @@
 <script lang="js">
 import * as faceapi from "../../../public/face-api.min";
 import axios from 'axios';
+import { FACE_LOGIN } from '../../graphql/Mutations';
 
 export default {
   name: 'LoginCamera',
@@ -66,7 +67,7 @@ export default {
     },
     detect: async function(){
       const video = this.$refs.video1
-      const displaySize = { width:video.width, height: video.height }
+      const displaySize = { width: video.width, height: video.height }
       const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions().withFaceDescriptor()
         if (detections) {
           /**
@@ -80,24 +81,22 @@ export default {
            * 
            * @ali-jalal I got this guys ...
            */
+            console.log(detections.descriptor);
+            this.$apollo.query({
+              query: FACE_LOGIN,
+              variables: {
+                data: Array.from(detections.descriptor)
+              }
+            })
+            .then(result => {
+              // Assume we have Token
+              console.log('Result after login: ', result);
+              // storage.setItem('X-auth', result);
+            })
+            .catch(err => {
+              console.error(err);
+            })
 
-          // try {
-          //   this.$apollo.query({
-          //     query: faceLogIn,
-          //     variables: {
-          //       data: detections.descriptor
-          //     }
-          //   })
-          //   .then(result => {
-          //     // Assume we have Token
-          //     console.log('Result after login: ', result);
-          //     storage.setItem('X-auth', result);
-          //   })
-          // }
-          // catch (err) {
-          //   // problem with detecting
-          //   console.log('something just happened')
-          // }
           this.detections = detections
           video.pause();
           video.removeAttribute('src');
