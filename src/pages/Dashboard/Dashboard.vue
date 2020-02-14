@@ -89,6 +89,27 @@
         </b-col>
       </b-row>
     </Widget>
+    <Widget>
+      <b-row>
+        <b-col>
+          <Whisker />
+        </b-col>
+      </b-row>
+    </Widget>
+    <Widget>
+      <b-row>
+        <b-col>
+          <Scatter />
+        </b-col>
+      </b-row>
+    </Widget>
+    <!-- <Widget>
+      <b-row>
+        <b-col>
+          <TreeMap />
+        </b-col>
+      </b-row>
+    </Widget> -->
   </div>
 </template>
 
@@ -98,7 +119,10 @@ import Widget from '@/components/Widget/Widget';
 // import FacialDiscriptorExtractor from '@/components/FacialDiscriptorExtractor';
 // import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
 // import TimelineComponent from '../../components/TimelineComponent';
-import Charts from '../../pages/Charts/Charts'
+import Charts from '../../pages/Charts/Charts';
+import Whisker from '../../components/Whisker';
+import Scatter from '../../components/Scatter';
+// import TreeMap from '../../components/charts/TreeMap'
 // import LoginCamera from '../../components/Cameras/LoginCamera'
 // import { Chart } from 'highcharts-vue';
 
@@ -108,7 +132,10 @@ export default {
     Widget,
     // Horizontal,
     // TimelineComponent
-    Charts
+    Charts,
+    Whisker,
+    Scatter
+    // TreeMap
   },
   data() {
     return {};

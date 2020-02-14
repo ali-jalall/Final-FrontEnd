@@ -9,6 +9,8 @@ import DetecingCamera from '../components/Cameras/DetectingCamera';
 // Tables
 import TablesBasicPage from '@/pages/Tables/Basic';
 
+import ProbabilitiesTable from '@/pages/ProbabilitiesTable/ProbabilitiesTable'
+
 // Sec Charts
 // import WorldPopulation from '../pages/WorldPopulation.vue';
 
@@ -72,11 +74,11 @@ const routes = [
       //   name: 'IconsPage',
       //   component: IconsPage,
       // },
-      // {
-      //   path: 'seccharts',
-      //   name: 'WhidaCharts',
-      //   component: UserPage
-      // },
+      {
+        path: 'seccharts',
+        name: 'ProbabilitiesTable',
+        component: ProbabilitiesTable
+      },
       {
         path: 'tables',
         name: 'TablesBasicPage',

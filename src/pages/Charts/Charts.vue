@@ -37,7 +37,7 @@
             <echart
               :options="cd.echarts.donut"
               :init-options="initEchartsOptions"
-              style="height: 365px; width: 100%;"
+              style="height: 364px; width: 100%;"
             />
           </Widget>
         </b-col>
@@ -88,32 +88,32 @@ export default {
       }
     };
   },
-  created() {
-    let updatedOptions = Object.create(this.cd)
-    this.$apollo.query({
-      query: getPeriodEmotions,
-      variables: {
-        startDate: (Date.now() - (24 * 60 * 60 * 1000)).toString(),
-        endDate: Date.now().toString()
-      }
-    }).then((results) => {
-      let fetchedData = []
-      results['averages'].forEach((emotionEntry, i) => {
-        let time = new Date(parseInt(results['timeStamps'][i]))
-        let timeStamp = time.getHours() + ":" + time.getMinutes()
-        Array.prototype.push.apply(fetchedData, [
-          [timeStamp, emotionEntry[0], "Neutral"],
-          [timeStamp, emotionEntry[1], "Happy"],
-          [timeStamp, emotionEntry[2], "Sad"],
-          [timeStamp, emotionEntry[3], "Angry"],
-          [timeStamp, emotionEntry[4], "Fearful"],
-          [timeStamp, emotionEntry[5], "Disgusted"],
-          [timeStamp, emotionEntry[6], "Surprised"]
-        ])
-      })
-      updatedOptions['river']['series'][0]['data'] = fetchedData
-      this.cd = updatedOptions
-   })
-  }
+  // created() {
+  //   let updatedOptions = Object.create(this.cd)
+  //   this.$apollo.query({
+  //     query: getPeriodEmotions,
+  //     variables: {
+  //       startDate: (Date.now() - (24 * 60 * 60 * 1000)).toString(),
+  //       endDate: Date.now().toString()
+  //     }
+  //   }).then((results) => {
+  //     let fetchedData = []
+  //     results['averages'].forEach((emotionEntry, i) => {
+  //       let time = new Date(parseInt(results['timeStamps'][i]))
+  //       let timeStamp = time.getHours() + ":" + time.getMinutes()
+  //       Array.prototype.push.apply(fetchedData, [
+  //         [timeStamp, emotionEntry[0], "Neutral"],
+  //         [timeStamp, emotionEntry[1], "Happy"],
+  //         [timeStamp, emotionEntry[2], "Sad"],
+  //         [timeStamp, emotionEntry[3], "Angry"],
+  //         [timeStamp, emotionEntry[4], "Fearful"],
+  //         [timeStamp, emotionEntry[5], "Disgusted"],
+  //         [timeStamp, emotionEntry[6], "Surprised"]
+  //       ])
+  //     })
+  //     updatedOptions['river']['series'][0]['data'] = fetchedData
+  //     this.cd = updatedOptions
+  //  })
+  // }
 };
 </script>
