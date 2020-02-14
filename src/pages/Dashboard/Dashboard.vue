@@ -75,17 +75,17 @@
         </b-col>
       </b-row>
     </div>
-    <Widget>
+    <!-- <Widget>
       <b-row>
         <b-col>
           <Horizontal />
         </b-col>
       </b-row>
-    </Widget>
+    </Widget> -->
     <Widget>
       <b-row>
         <b-col>
-          <TimelineComponent />
+          <Charts />
         </b-col>
       </b-row>
     </Widget>
@@ -96,8 +96,9 @@
 import Widget from '@/components/Widget/Widget';
 // import UploadImage from '@/components/UploadImage';
 // import FacialDiscriptorExtractor from '@/components/FacialDiscriptorExtractor';
-import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
-import TimelineComponent from '../../components/TimelineComponent';
+// import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
+// import TimelineComponent from '../../components/TimelineComponent';
+import Charts from '../../pages/Charts/Charts'
 // import LoginCamera from '../../components/Cameras/LoginCamera'
 // import { Chart } from 'highcharts-vue';
 
@@ -105,8 +106,9 @@ export default {
   name: 'Dashboard',
   components: {
     Widget,
-    Horizontal,
-    TimelineComponent
+    // Horizontal,
+    // TimelineComponent
+    Charts
   },
   data() {
     return {};

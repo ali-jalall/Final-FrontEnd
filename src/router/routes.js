@@ -21,7 +21,7 @@ import UserPage from '../pages/UserPage'
 import AnalyticsPage from '@/pages/Dashboard/Dashboard';
 
 // Charts
-import ChartsPage from '@/pages/Charts/Charts';
+import Charts from '@/pages/Charts/Charts';
 
 // Ui
 // import IconsPage from '@/pages/Icons/Icons';
@@ -59,8 +59,8 @@ const routes = [
       },
       {
         path: 'charts',
-        name: 'ChartsPage',
-        component: ChartsPage,
+        name: 'Charts',
+        component: Charts,
       },
       // {
       //   path: 'typography',
