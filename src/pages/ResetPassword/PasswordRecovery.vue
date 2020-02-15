@@ -8,20 +8,37 @@
       </h5>
       <Widget
         class="widget-auth mx-auto"
-        title="<h3 class='mt-3'>Reset Your Password</h3>"
+        title="<h3 class='mt-3'>Password Recovery</h3>"
         custom-header
       >
-        <p class="widget-auth-info mt-2 mb-5">
-          Enter Email to recieve Reset Link.
-        </p>
         <form
           class="my-3"
           @submit.prevent="login"
         >
           <div class="form-group ">
+            <label
+              class="mt-4"
+              style="margin-left: 2px;"
+            >
+              New Password 
+            </label>
             <input
-              ref="email"
-              class="form-control no-border my-3"
+              ref="first-password"
+              class="form-control no-border"
+              required
+              type="email"
+              name="email"
+              placeholder="Email"
+            >
+            <label
+              class="mt-5"
+              style="margin-left: 2px;"
+            >
+              Re-enter Password
+            </label>
+            <input
+              ref="first-password"
+              class="form-control no-border"
               required
               type="email"
               name="email"
@@ -31,25 +48,26 @@
           <b-button
             type="submit"
             size="sm"
-            class="auth-btn my-3"
+            class="auth-btn mt-5"
             variant="inverse"
           >
-            Reset
+            Reset Password
           </b-button>
         </form>
       </Widget>
     </b-container>
     <footer class="auth-footer">
-      2019 &copy; Sing App Vue Admin Dashboard Template.
+      2019 &copy; The Fifth Team .
     </footer>
   </div>
 </template>
+
 
 <script>
 import Widget from '@/components/Widget/Widget';
 
 export default {
-  name: 'ResetPassword',
+  name: 'PasswordRecovery',
   components: { Widget },
   data() {
     return {};
@@ -58,3 +76,5 @@ export default {
   methods: {},
 };
 </script>
+
+<style scoped lang="scss"></style>

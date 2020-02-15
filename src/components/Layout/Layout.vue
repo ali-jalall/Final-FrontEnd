@@ -3,7 +3,7 @@
     <Sidebar />
     <div class="wrap">
       <Header />
-      <Chat />
+      <Timeline />
       <v-touch
         class="content"
         :swipe-options="{direction: 'horizontal'}"
@@ -27,7 +27,7 @@ import { mapState, mapActions } from 'vuex';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
-import Chat from '../../components/Chat/Chat';
+import Timeline from '../../components/Timeline/Timeline';
 
 import './Layout.scss';
 
@@ -36,7 +36,7 @@ export default {
   components: {
     Sidebar,
     Header,
-    Chat 
+    Timeline 
   },
   methods: {
     ...mapActions(

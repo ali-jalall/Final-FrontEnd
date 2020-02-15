@@ -29,7 +29,8 @@ import Charts from '@/pages/Charts/Charts';
 // import IconsPage from '@/pages/Icons/Icons';
 // import NotificationsPage from '@/pages/Notifications/Notifications';
 
-import ResetPassword from '@/pages/ResetPassword'
+import EmailForm from '@/pages/ResetPassword/EmailForm'
+import PasswordRecovery from '@/pages/ResetPassword/PasswordRecovery'
 
 // import LoginCamera from '../components/Cameras/LoginCamera'
 
@@ -42,7 +43,7 @@ const routes = [
   {
     path: '/reset',
     name: 'ResetPassword',
-    component: DetecingCamera,
+    component: PasswordRecovery,
   },
   // {
   //   path: '/error',

@@ -222,86 +222,20 @@
 import Vue from 'vue';
 import { mapState, mapActions } from 'vuex';
 import { FACE_DETECTING_SUBSCRIPTIOM, EMOTIONS_QUERY } from '../../graphql/Mutations'
-
-import a1 from '../../assets/people/a1.jpg';
-import a2 from '../../assets/people/a2.jpg';
-import a3 from '../../assets/people/a3.jpg';
-import a4 from '../../assets/people/a4.jpg';
-import a5 from '../../assets/people/a5.jpg';
-import a6 from '../../assets/people/a6.jpg';
 import { MessageStates } from '../../store/layout';
 
 export default {
-  name: 'Chat',
+  name: 'Timeline',
   data() {
     return {
-      // emotions: [],
       messageStates: MessageStates,
-      // todayConversations: [{
-      //   name: 'Chris Gray',
-      //   status: 'success',
-      //   lastMessage: 'Hey! What\'s up? So many times since we',
-      //   image: a2,
-      //   // messages: [{
-      //   //   id: 0,
-      //   //   text: 'Hey! What\'s up?',
-      //   // }, {
-      //   //   id: 1,
-      //   //   text: 'Are you there?',
-      //   // }, {
-      //   //   id: 2,
-      //   //   text: 'Let me know when you come back.',
-      //   // }, {
-      //   //   id: 3,
-      //   //   text: 'I am here!',
-      //   //   fromMe: true,
-      //   // }],
-      // }, {
-      //   name: 'Jamey Brownlow',
-      //   status: 'gray-light',
-      //   lastMessage: 'Good news coming tonight. Seems they agreed to proceed',
-      //   image: a1,
-      // }, {
-      //   name: 'Livia Walsh',
-      //   status: 'danger',
-      //   lastMessage: 'Check out my latest email plz!',
-      //   image: a1,
-      // }, {
-      //   name: 'Jaron Fitzroy',
-      //   status: 'gray-light',
-      //   lastMessage: 'What about summer break?',
-      //   image: a1,
-      // }, {
-      //   name: 'Mike Lewis',
-      //   status: 'success',
-      //   lastMessage: 'Just ain\'t sure about the weekend now. 90% I\'ll make it.',
-      //   image: a4,
-      // }],
-      // lastWeekConversations: [{
-      //   name: 'Freda Edison',
-      //   status: 'gray-light',
-      //   lastMessage: 'Hey what\'s up? Me and Monica going for a lunch somewhere. Wanna join?',
-      //   image: a6,
-      // }, {
-      //   name: 'Livia Walsh',
-      //   status: 'success',
-      //   lastMessage: 'Check out my latest email plz!',
-      //   image: a5,
-      // }, {
-      //   name: 'Jaron Fitzroy',
-      //   status: 'warning',
-      //   lastMessage: 'What about summer break?',
-      //   image: a3,
-      // }, {
-      //   name: 'Mike Lewis',
-      //   status: 'gray-light',
-      //   lastMessage: 'Just ain\'t sure about the weekend now. 90% I\'ll make it.',
-      //   image: a1,
-      // }],
       chatMessageOpened: true,
       conversation: Object,
       searchValue: '',
     };
+  },
+  computed: {
+    ...mapState('layout', ['chatOpen', 'chatNotificationMessageState']),
   },
   methods: {
     ...mapActions('layout', ['readMessage']),
@@ -341,22 +275,12 @@ export default {
       }
     },
   },
-  mounted () {
-    this.$watch('emotions', function () {
-      console.log('a thing changed')
-    }, {deep:true})
-  },
-  computed: {
-    ...mapState('layout', ['chatOpen', 'chatNotificationMessageState']),
-  },
   apollo: {
     emotions: {
       query: EMOTIONS_QUERY,
       subscribeToMore: {
         document: FACE_DETECTING_SUBSCRIPTIOM,
         updateQuery: (previousData, { subscriptionData }) => {
-          console.log('before, ' + previousData.emotions)
-          console.log('after, ' + subscriptionData.data.faceDetected)
           return {
             emotions: [
               ...previousData.emotions,
@@ -366,11 +290,8 @@ export default {
         }
       }
     }
-  },
-  mounted() {
-    console.log('Am here', this.emotions)
   }
 };
 </script>
 
-<style src="./Chat.scss" lang="scss" />
+<style src="./Timeline.scss" lang="scss" />
