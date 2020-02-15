@@ -39,7 +39,7 @@ const httpLink = new HttpLink({
 });
 
 const wsLink = new WebSocketLink({
-  uri: 'wss://192.168.3.230:4000/graphql',
+  uri: 'ws://localhost:4000/graphql',
   options: {
     reconnect: true
   }
@@ -55,7 +55,7 @@ const link = split(
 )
 
 const apolloClient = new ApolloClient({
-  link: createUploadLink({ uri: 'http://localhost:4000/graphql' }),
+  // link: createUploadLink({ uri: 'http://localhost:4000/graphql' }),
   cache: new InMemoryCache(),
   fetchOptions: {
     credentials: 'include'
@@ -70,7 +70,7 @@ const apolloClient = new ApolloClient({
       }
     })
   },
-  // link,
+  link,
   onError: (e) => { console.log(e) },
   connectToDevTools: true
 })

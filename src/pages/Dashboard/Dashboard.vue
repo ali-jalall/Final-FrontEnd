@@ -82,13 +82,11 @@
         </b-col>
       </b-row>
     </Widget> -->
-    <Widget>
-      <b-row>
-        <b-col>
-          <Charts />
-        </b-col>
-      </b-row>
-    </Widget>
+    <b-row>
+      <b-col>
+        <Charts />
+      </b-col>
+    </b-row>
     <Widget>
       <b-row>
         <b-col>
@@ -129,7 +127,7 @@ import Widget from '@/components/Widget/Widget';
 import Charts from '../../pages/Charts/Charts';
 import Whisker from '../../components/Whisker';
 import Scatter from '../../components/Scatter';
-import CSVDownload from '../../components/CSVDownload';
+// import CSVDownload from '../../components/CSVDownload';
 // import TreeMap from '../../components/charts/TreeMap'
 // import LoginCamera from '../../components/Cameras/LoginCamera'
 // import { Chart } from 'highcharts-vue';
@@ -143,7 +141,7 @@ export default {
     Charts,
     Whisker,
     Scatter,
-    CSVDownload,
+    // CSVDownload,
     // TreeMap
   },
   data() {

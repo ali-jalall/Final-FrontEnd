@@ -22,15 +22,15 @@
         class="chatSidebarUserGroup"
       >
         <b-list-group-item
-          v-for="(emotion, _id) in emotions"
-          :key="_id"
+          v-for="emotion in emotions"
+          :key="emotion.name"
           @click="(e) => openMessages(conversation, index)"
         >
           <div>
             <span class="thumb-sm float-left">
               <img
                 class="rounded-circle"
-                :src="conversation.image"
+                src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"
                 alt="..."
               >
             </span>
@@ -51,13 +51,13 @@
                   <div>
                     <img
                       class="emoji"
-                      width="70px"
+                      width="50px"
                       src="/img/netural.006cc26d.png"
                       alt=""
                     >
-                    <h3 class="text-center">
-                      <strong> {{ emotion.angry }} </strong>
-                    </h3>
+                    <h6 class="text-center">
+                      <b> {{ emotion.neutral }} </b>
+                    </h6>
                   </div>
                 </b-col>
                 <b-col
@@ -68,13 +68,13 @@
                     <div>
                       <img
                         class="emoji"
-                        width="70px"
+                        width="50px"
                         src="/img/netural.006cc26d.png"
                         alt=""
                       >
-                      <h3 class="text-center">
-                        <strong>13%</strong>
-                      </h3>
+                      <h6 class="text-center">
+                        <b> {{ emotion.happy }} </b>
+                      </h6>
                     </div>
                   </div>
                 </b-col>
@@ -86,13 +86,13 @@
                     <div>
                       <img
                         class="emoji"
-                        width="70px"
+                        width="50px"
                         src="/img/netural.006cc26d.png"
                         alt=""
                       >
-                      <h3 class="text-center">
-                        <strong>33%</strong>
-                      </h3>
+                      <h6 class="text-center">
+                        <b> {{ emotion.sad }} </b>
+                      </h6>
                     </div>
                   </div>
                 </b-col>
@@ -104,13 +104,13 @@
                     <div>
                       <img
                         class="emoji"
-                        width="70px"
+                        width="50px"
                         src="/img/netural.006cc26d.png"
                         alt=""
                       >
-                      <h3 class="text-center">
-                        <strong>7%</strong>
-                      </h3>
+                      <h6 class="text-center">
+                        <b> {{ emotion.angry }} </b>
+                      </h6>
                     </div>
                   </div>
                 </b-col>
@@ -122,13 +122,13 @@
                     <div>
                       <img
                         class="emoji"
-                        width="70px"
+                        width="50px"
                         src="/img/netural.006cc26d.png"
                         alt=""
                       >
-                      <h3 class="text-center">
-                        <strong>28%</strong>
-                      </h3>
+                      <h6 class="text-center">
+                        <b> {{ emotion.fearful }} </b>
+                      </h6>
                     </div>
                   </div>
                 </b-col>
@@ -140,13 +140,13 @@
                     <div>
                       <img
                         class="emoji"
-                        width="70px"
+                        width="50px"
                         src="/img/netural.006cc26d.png"
                         alt=""
                       >
-                      <h3 class="text-center">
-                        <strong>3%</strong>
-                      </h3>
+                      <h6 class="text-center">
+                        <b>{{ emotion.disgusted }}</b>
+                      </h6>
                     </div>
                   </div>
                 </b-col>
@@ -158,13 +158,13 @@
                     <div>
                       <img
                         class="emoji"
-                        width="70px"
+                        width="50px"
                         src="/img/netural.006cc26d.png"
                         alt=""
                       >
-                      <h3 class="text-center">
-                        <strong>2%</strong>
-                      </h3>
+                      <h6 class="text-center">
+                        <b>{{ emotion.surprised }}</b>
+                      </h6>
                     </div>
                   </div>
                 </b-col>
@@ -341,6 +341,11 @@ export default {
       }
     },
   },
+  mounted () {
+    this.$watch('emotions', function () {
+      console.log('a thing changed')
+    }, {deep:true})
+  },
   computed: {
     ...mapState('layout', ['chatOpen', 'chatNotificationMessageState']),
   },
@@ -350,10 +355,12 @@ export default {
       subscribeToMore: {
         document: FACE_DETECTING_SUBSCRIPTIOM,
         updateQuery: (previousData, { subscriptionData }) => {
+          console.log('before, ' + previousData.emotions)
+          console.log('after, ' + subscriptionData.data.faceDetected)
           return {
             emotions: [
               ...previousData.emotions,
-              ...subscriptionData.data.faceDetected
+              subscriptionData.data.faceDetected
             ]
           }
         }

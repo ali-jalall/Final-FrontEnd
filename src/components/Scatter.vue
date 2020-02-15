@@ -1,10 +1,9 @@
 <template>
-    <div>
-        <h1>Scatter Plot</h1>
-        <h2></h2>
-        <canvas ref="myCanvas" ></canvas>
-
-    </div>
+  <div>
+    <h1>Scatter Plot</h1>
+    <h2 />
+    <canvas ref="myCanvas" />
+  </div>
 </template>
 
 <script>
@@ -29,6 +28,12 @@ export default {
             dbscan : new clustering.DBSCAN(),
             
         }
+    },
+
+    mounted() {
+        this.drawChart();
+        //this.storeIDs()
+        //this.assignColors()
     },
 
     methods: {
@@ -331,12 +336,6 @@ export default {
         
 
         
-    },
-
-    mounted() {
-        this.drawChart();
-        //this.storeIDs()
-        //this.assignColors()
     },
 
     // created() {
