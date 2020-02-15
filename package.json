@@ -49,9 +49,11 @@
     "vue-image-lightbox-carousel": "^1.0.7",
     "vue-popperjs": "^1.5.3",
     "vue-router": "^3.0.1",
+    "vue-stepper": "^1.4.2",
     "vue-sweetalert-icons": "^4.2.0",
     "vue-toasted": "^1.1.27",
     "vue-touch": "2.0.0-beta.4",
+    "vuelidate": "^0.7.5",
     "vuetrend": "^0.3.2",
     "vuex": "^3.0.1"
   },

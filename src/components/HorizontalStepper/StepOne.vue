@@ -1,136 +1,108 @@
 <template lang="html">
-  <section class="step-one">
-    <b-row>
-      <b-col
-        lg="10"
-        xs="12"
-        class="m-auto w-100"
+  <div style="padding: 2rem 3rem; text-align: left;">
+    <div class="field form-group">
+      <label class="label">Username</label>
+      <div class="control">
+        <input
+          v-model="form.username"
+          :class="['form-control', 'input', ($v.form.username.$error) ? 'is-danger' : '']"
+          type="text"
+          placeholder="Enter Username"
+          aria-describedby="emailHelp"
+        >
+      </div>
+      <p
+        v-if="$v.form.username.$error"
+        class="help text-danger"
       >
-        <h1 class="text-center py-4">
-          User Data
-        </h1>
-        <form>
-          <b-row>
-            <b-col
-              class="my-2"
-              sm="3"
-            >
-              <label> FirstName: </label>
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="9"
-            >
-              <input
-                class="form-control"
-                value=""
-                name="firstName"
-                type="text"
-                required
-                @input="handleChange"
-              >
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="3"
-            >
-              <label> LastName: </label>
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="9"
-            >
-              <input
-                class="form-control"
-                value=""
-                name="lastName"
-                type="text"
-                required
-                @input="handleChange"
-              >
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="3"
-            >
-              <label> Age: </label>
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="9"
-            >
-              <input
-                class="form-control"
-                value=""
-                name="age"
-                type="number"
-                required
-                @input="handleChange"
-              >
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="3"
-            >
-              <label> Gender: </label>
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="9"
-            >
-              <select
-                class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                name="gender"
-                @input="addGender"
-              >
-                <option
-                  class="dropdown-item"
-                  name="Option"
-                  value="Select One"
-                >
-                  Chose One ...
-                </option>                    
-                <option
-                  class="dropdown-item"
-                  name="gender"
-                  value=""
-                >
-                  Male
-                </option>
-                <option
-                  class="dropdown-item"
-                  name="gender"
-                  value=""
-                >
-                  Female
-                </option>
-              </select>
-            </b-col>
-          </b-row>
-        </form>
-      </b-col>
-    </b-row>
-  </section>
+        This username is invalid
+      </p>
+    </div>
+    <div class="field form-group">
+      <label class="label">Email</label>
+      <div class="control">
+        <input
+          v-model="form.demoEmail"
+          :class="['form-control', 'input', ($v.form.demoEmail.$error) ? 'is-danger' : '']"
+          type="text"
+          placeholder="Email input"
+        >
+      </div>
+      <p
+        v-if="$v.form.demoEmail.$error"
+        class="help text-danger"
+      >
+        This email is invalid
+      </p>
+    </div>
+    <div class="field form-group">
+      <label class="label">Message</label>
+      <div class="control">
+        <textarea
+          v-model="form.message"
+          :class="['form-control', 'textarea', ($v.form.message.$error) ? 'is-danger' : '']"
+          placeholder="Textarea"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="js">
-import { mapState } from 'vuex'
+import { validationMixin } from 'vuelidate';
+import { required, email } from 'vuelidate/lib/validators';
+
 
   export default  {
     name: 'StepOne',
-    components: {  },
-    props: [],
-    data () {
-      return {
-        
+    mixins: [validationMixin],
+    props: ['clickedNext', 'currentStep'],
+    data() {
+        return {
+            form: {
+              username: '',
+              demoEmail: '',
+              message: ''
+            }
+        }
+    },
+    validations: {
+        form: {
+            username: {
+                required
+            },
+            demoEmail: {
+                required,
+                email
+            },
+            message: {
+                required
+            }
+        }
+    },
+    watch: {
+      $v: {
+        handler: function (val) {
+          if(!val.$invalid) {
+            this.$emit('can-continue', {value: true});
+          } else {
+            this.$emit('can-continue', {value: false});
+          }
+        },
+        deep: true
+      },
+      clickedNext(val) {
+        if(val === true) {
+          this.$v.form.$touch();
+        }
       }
     },
-    computed: {
-      // ...mapState({
-      //   firstName: state => state.firstName
-      // })
-    },
-    mounted () {
+    mounted() {
+      if(!this.$v.$invalid) {
+        this.$emit('can-continue', {value: true});
+      } else {
+        this.$emit('can-continue', {value: false});
+      }
     },
     methods: {
       handleChange (event) {
@@ -148,8 +120,15 @@ import { mapState } from 'vuex'
 </script>
 
 <style scoped lang="scss">
-  .step-one {
-    padding-top: 2.5em;
-    padding-bottom: 2.8em;
-  }
+.step-one {
+  padding-top: 2.5em;
+  padding-bottom: 2.8em;
+}
+.is-danger {
+  border: 1px solid rgb(255, 77, 77);
+  // outline: 2px solid green;
+}
+.text-danger {
+  color: red;
+}
 </style>

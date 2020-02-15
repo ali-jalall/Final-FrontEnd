@@ -42,7 +42,12 @@ const routes = [
   },
   {
     path: '/reset',
-    name: 'ResetPassword',
+    name: 'EmailForm',
+    component: EmailForm,
+  },
+  {
+    path: '/recovery',
+    name: 'PasswordRecovery',
     component: PasswordRecovery,
   },
   // {

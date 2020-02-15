@@ -75,13 +75,13 @@
         </b-col>
       </b-row>
     </div>
-    <!-- <Widget>
+    <Widget>
       <b-row>
         <b-col>
           <Horizontal />
         </b-col>
       </b-row>
-    </Widget> -->
+    </Widget>
     <b-row>
       <b-col>
         <Charts />
@@ -122,7 +122,7 @@
 import Widget from '@/components/Widget/Widget';
 // import UploadImage from '@/components/UploadImage';
 // import FacialDiscriptorExtractor from '@/components/FacialDiscriptorExtractor';
-// import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
+import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
 // import TimelineComponent from '../../components/TimelineComponent';
 import Charts from '../../pages/Charts/Charts';
 import Whisker from '../../components/Whisker';
@@ -136,7 +136,7 @@ export default {
   name: 'Dashboard',
   components: {
     Widget,
-    // Horizontal,
+    Horizontal,
     // TimelineComponent
     Charts,
     Whisker,

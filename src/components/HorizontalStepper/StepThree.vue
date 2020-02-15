@@ -14,19 +14,35 @@ import UploadImage from '@/components/UploadImage';
 
   export default  {
     name: 'StepThree',
+    props: {
+      fileUploaded: {
+        type: Boolean
+      },
+      clickedNext,
+      currentStep
+    },
+    watch: {
+      fileUploaded: {
+        deep: true,
+
+        handler () {
+          this.$emit('can-continue', {value: true});
+        }
+      }
+    },
+    mounted() {
+      // console.log(this.fileUploaded)
+    },
     components: {
       UploadImage
     },
     data () {
-      return {
-
-      }
     },
     computed: {
 
     },
     mounted () {
-
+      
     },
     methods: {
 

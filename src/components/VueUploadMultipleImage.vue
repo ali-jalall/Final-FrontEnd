@@ -421,6 +421,7 @@ export default {
         document.getElementById(this.idEdit).value = ''
       }
       this.$store.commit('addImage', this.file);
+      this.$emit('isUploaded', { value: true })
       // this.isUploaded = true; 
       console.log(this.$store.getters.getUserData)
     },

@@ -9,6 +9,9 @@ import Toasted from 'vue-toasted';
 import VueApexCharts from 'vue-apexcharts';
 import store from './store';
 
+import Vuelidate from 'vuelidate' 
+Vue.use(Vuelidate)
+
 import VueUploadMultipleImage from '../src/components/VueUploadMultipleImage';
 
 import { onError } from 'apollo-link-error'

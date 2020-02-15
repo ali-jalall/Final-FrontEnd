@@ -18,8 +18,25 @@
 import VueUploadMultipleImage from '../components/VueUploadMultipleImage'
 export default {
   name: 'UploadImage',
+  props: {
+    isUploaded: {
+      type: Boolean
+    }
+  },
+  watch: {
+    isUploaded: {
+      deep: true,
+
+      handler() {
+        this.$emit('fileUploaded', { value: true })
+      }
+    }
+  },
   components: {
     VueUploadMultipleImage
+  },
+  mounted() {
+    console.log(this.isUploaded)
   },
   data () {
     return {

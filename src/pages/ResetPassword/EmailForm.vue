@@ -33,6 +33,7 @@
             size="sm"
             class="auth-btn my-3"
             variant="inverse"
+            href="http://localhost:8080/#/recovery"
           >
             Reset
           </b-button>
@@ -40,7 +41,7 @@
       </Widget>
     </b-container>
     <footer class="auth-footer">
-      2019 &copy; Sing App Vue Admin Dashboard Template.
+      2019 &copy; The Fifth Team rbktn-01.
     </footer>
   </div>
 </template>
