@@ -27,7 +27,31 @@ export default {
   data() {
     return {
       detections: null,
-      refreshId: null
+      refreshId: null,
+      descriptors: []
+    }
+  },
+  watch: {
+    descriptors: {
+      deep: true,
+  
+      handler () {
+        console.log(this.descriptors)
+        this.$apollo.query({
+          query: FACE_LOGIN,
+          variables: {
+            data: this.descriptors
+          }
+        })
+        .then(result => {
+          // Assume we have Token
+          console.log('Result after login: ', result);
+          // storage.setItem('X-auth', result);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      }
     }
   },
   computed: {
@@ -60,6 +84,15 @@ export default {
         this.startRecognizing()
       });
   },
+  // apollo: {
+  //   descriptors: {
+  //     query: FACE_LOGIN,
+  //     variables: {
+  //       data: 'Meow',
+  //     },
+  //   }
+  // },
+  
   methods: {
      startRecognizing: function (){
       const video = this.$refs.video1
@@ -81,21 +114,23 @@ export default {
            * 
            * @ali-jalal I got this guys ...
            */
-            console.log(detections.descriptor);
-            this.$apollo.query({
-              query: FACE_LOGIN,
-              variables: {
-                data: Array.from(detections.descriptor)
-              }
-            })
-            .then(result => {
-              // Assume we have Token
-              console.log('Result after login: ', result);
-              // storage.setItem('X-auth', result);
-            })
-            .catch(err => {
-              console.error(err);
-            })
+          console.log(detections)
+          this.descriptors = Array.from(detections.descriptor)
+
+            // this.$apollo.query({
+            //   query: FACE_LOGIN,
+            //   variables: {
+            //     data: Array.from(detections.descriptor)
+            //   }
+            // })
+            // .then(result => {
+            //   // Assume we have Token
+            //   console.log('Result after login: ', result);
+            //   // storage.setItem('X-auth', result);
+            // })
+            // .catch(err => {
+            //   console.error(err);
+            // })
 
           this.detections = detections
           video.pause();
