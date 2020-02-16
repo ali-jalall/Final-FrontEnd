@@ -93,6 +93,7 @@
 <script>
 import Widget from '@/components/Widget/Widget';
 import LoginCamera from '@/components/Cameras/LoginCamera';
+import { SIGN_IN_ADMIN } from '../../graphql/Mutations'
 
 export default {
   name: 'LoginPage',
@@ -103,7 +104,7 @@ export default {
     };
   },
   created() {
-    if (window.localStorage.getItem('authenticated') === 'true') {
+    if (window.localStorage.getItem('X-auth')) {
       this.$router.push('/app/main/analytics');
     }
   },
@@ -112,10 +113,28 @@ export default {
       const email = this.$refs.email.value;
       const password = this.$refs.password.value;
 
-      if (email.length !== 0 && password.length !== 0) {
-        window.localStorage.setItem('authenticated', true);
+      this.$apollo.mutate({
+        mutation: SIGN_IN_ADMIN,
+        variables: {
+          email,
+          password
+        }
+      })
+      .then(({ data }) => {
+        console.log('Token: ', data.signInAdmin.token)
+        localStorage.setItem('X-auth', data.signInAdmin.token);
+        localStorage.setItem('isAdmin', true);
         this.$router.push('/app/dashboard');
-      }
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+
+      // if (email.length !== 0 && password.length !== 0) {
+      //   window.localStorage.setItem('authenticated', true);
+      //   this.$router.push('/app/dashboard');
+      // }
     },
   },
 };
