@@ -39,16 +39,25 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+    meta: {
+      guest: true
+    }
   },
   {
     path: '/reset',
     name: 'EmailForm',
-    component: EmailForm,
+    component: DetecingCamera,
+    meta: {
+      guest: true
+    }
   },
   {
     path: '/recovery',
     name: 'PasswordRecovery',
     component: PasswordRecovery,
+    meta: {
+      guest: true
+    }
   },
   // {
   //   path: '/error',
@@ -59,6 +68,10 @@ const routes = [
     path: '/app',
     name: 'Layout',
     component: Layout,
+    meta: {
+      requiresAuth: true,
+      isAdmin: true
+    },
     children: [
       {
         path: 'dashboard',
