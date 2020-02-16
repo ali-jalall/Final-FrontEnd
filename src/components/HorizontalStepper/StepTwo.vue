@@ -101,6 +101,8 @@ export default {
 
       handler() {
         this.$emit('can-continue', {value: true});
+        this.$emit('step-completed', {value: true});
+
       }
     }
   },

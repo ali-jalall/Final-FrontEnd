@@ -47,6 +47,9 @@
   @include shadow(1);
   min-height: 200px;
   .top {
+    padding: 1.2em .1em;
+
+
     .stepper-button-top {
       z-index: 20;
       padding: .4rem;
@@ -101,6 +104,8 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 2em 1em !important;
+        padding-bottom: 3em !important;
         @include breakpoint(xs) {
           width: 100% !important;
         }
@@ -118,8 +123,8 @@
           }
         }
         .circle {
-          margin-bottom: 1rem;
-          padding: 0 1rem;
+          margin-bottom: 2rem;
+          padding: 0 0rem;
           background-color: white;
           i {
             background-color: #3383c8;
@@ -139,7 +144,7 @@
           h3,
           h4,
           h5 {
-            margin: 0 0 .2rem 0;
+            margin: 20px -40px 26.2rem 0px;
             color: #333333;
             font-weight: bold;
           }

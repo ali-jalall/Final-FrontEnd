@@ -283,7 +283,14 @@ export default {
       showLightbox: false,
       arrLightBox: [],
       file: null,
-      // isUploaded: false,
+      isFileUploaded: false
+    }
+  },
+  watch: {
+    deep: true,
+
+    handler () {
+      this.$emit('isFileUploaded', {value: true});
     }
   },
   computed: {
@@ -387,6 +394,7 @@ export default {
       };
       reader.readAsDataURL(file);
       this.$emit('edit-image', formData, this.currentIndexImage, this.images)
+      this.isFileUploaded = true;
     },
     uploadFieldChange (e) {
       let files = e.target.files || e.dataTransfer.files
@@ -403,8 +411,8 @@ export default {
         document.getElementById(this.idUpload).value = []
       }
       this.$store.commit('addImage', this.file);
+      this.isFileUploaded = true;
       // this.isUploaded = true; 
-      console.log(this.$store.getters.getUserData)
     },
     editFieldChange (e) {
       let files = e.target.files || e.dataTransfer.files
@@ -421,9 +429,8 @@ export default {
         document.getElementById(this.idEdit).value = ''
       }
       this.$store.commit('addImage', this.file);
-      this.$emit('isUploaded', { value: true })
+      this.isFileUploaded = true;
       // this.isUploaded = true; 
-      console.log(this.$store.getters.getUserData)
     },
     changeHighlight (currentIndex) {
       this.currentIndexImage = currentIndex;
@@ -467,8 +474,8 @@ export default {
         this.file = null;
       }, this.images)
       this.$store.commit('addImage', null)
-      // this.isUploaded = false; 
-    },
+      this.isFileUploaded = false;
+      },
     openGallery(index) {
       this.showLightbox = true
       this.$refs.lightbox.showImage(index)

@@ -1,18 +1,16 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-8 is-offset-2">
-          <horizontal-stepper
-            :steps="demoSteps"
-            @completed-step="completeStep"
-            @active-step="isStepActive"
-            @stepper-finished="alert"
-          />
-        </div>
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2 w-100 h-100">
+        <horizontal-stepper
+          :steps="demoSteps"
+          @completed-step="completeStep"
+          @active-step="isStepActive"
+          @stepper-finished="alert"
+        />
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -33,8 +31,8 @@
                     {
                         icon: 'mail',
                         name: 'first',
-                        title: 'Sample title 1',
-                        subtitle: 'Subtitle sample',
+                        title: 'User Data',
+                        subtitle: 'Please Enter Youer information',
                         component: StepOne,
                         completed: false
  
@@ -42,16 +40,16 @@
                     {
                         icon: 'report_problem',
                         name: 'second',
-                        title: 'Sample title 2',
-                        subtitle: 'Subtitle sample',
+                        title: 'Face Descriptors',
+                        subtitle: 'Upload 3 images for descriptors',
                         component: StepTwo,
                         completed: false
                     },
                     {
                         icon: 'report_problem',
                         name: 'second',
-                        title: 'Sample title 2',
-                        subtitle: 'Subtitle sample',
+                        title: 'User Photo',
+                        subtitle: 'Upload Photo for User',
                         component: StepThree,
                         completed: false
                     }
@@ -113,4 +111,7 @@
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
+.container {
+    max-width: 100%;
+    }
 </style>

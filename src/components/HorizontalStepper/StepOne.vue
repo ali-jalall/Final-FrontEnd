@@ -1,56 +1,104 @@
 <template lang="html">
   <div style="padding: 2rem 3rem; text-align: left;">
     <div class="field form-group">
-      <label class="label">Username</label>
-      <div class="control">
-        <input
-          v-model="form.username"
-          :class="['form-control', 'input', ($v.form.username.$error) ? 'is-danger' : '']"
-          type="text"
-          placeholder="Enter Username"
-          aria-describedby="emailHelp"
-        >
-      </div>
+      <label> FirstName: </label>
+      <input
+        v-model="form.firstname"
+        :class="['form-control', 'input', ($v.form.firstname.$error) ? 'is-danger' : '']"
+        placeholder="Enter Firstname"
+        value=""
+        name="firstName"
+        type="text"
+        required
+        @input="handleChange"
+      >
       <p
-        v-if="$v.form.username.$error"
+        v-if="$v.form.firstname.$error"
         class="help text-danger"
       >
-        This username is invalid
+        Please Enter First name
       </p>
     </div>
     <div class="field form-group">
-      <label class="label">Email</label>
-      <div class="control">
-        <input
-          v-model="form.demoEmail"
-          :class="['form-control', 'input', ($v.form.demoEmail.$error) ? 'is-danger' : '']"
-          type="text"
-          placeholder="Email input"
-        >
-      </div>
+      <label> LastName: </label>
+      <input
+        v-model="form.lastname"
+        :class="['form-control', 'input', ($v.form.lastname.$error) ? 'is-danger' : '']"
+        placeholder="Enter LastName"
+        value=""
+        name="lastName"
+        type="text"
+        required
+        @input="handleChange"
+      >
       <p
-        v-if="$v.form.demoEmail.$error"
+        v-if="$v.form.lastname.$error"
         class="help text-danger"
       >
-        This email is invalid
+        Please Enter Last name
       </p>
     </div>
     <div class="field form-group">
-      <label class="label">Message</label>
-      <div class="control">
-        <textarea
-          v-model="form.message"
-          :class="['form-control', 'textarea', ($v.form.message.$error) ? 'is-danger' : '']"
-          placeholder="Textarea"
-        />
-      </div>
+      <label> Age: </label>
+      <input
+        v-model="form.age"
+        :class="['form-control', 'input', ($v.form.age.$anyError) ? 'is-danger' : '']"
+        placeholder="Enter Age"
+        value=""
+        name="age"
+        type="number"
+        required
+        @input="handleChange"
+      >
+      <p
+        v-if="$v.form.age.$anyError"
+        class="help text-danger"
+      >
+        Please Enter Valid age
+      </p>
+    </div>
+    <div class="field form-group">
+      <label> Gender: </label> <br>
+      <select
+        class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+        name="gender"
+        @input="addGender"
+      >
+        <option
+          class="dropdown-item"
+          name="Option"
+          value="Select One"
+        >
+          Chose One ...
+        </option>                    
+        <option
+          class="dropdown-item"
+          name="gender"
+          value=""
+        >
+          Male
+        </option>
+        <option
+          class="dropdown-item"
+          name="gender"
+          value=""
+        >
+          Female
+        </option>
+      </select>
+      <p
+        v-if="$v.form.age.$anyError"
+        class="help text-danger"
+      >
+        Please Enter Valid age
+      </p>
     </div>
   </div>
 </template>
 
 <script lang="js">
 import { validationMixin } from 'vuelidate';
-import { required, email } from 'vuelidate/lib/validators';
+import { required, email, between } from 'vuelidate/lib/validators';
 
 
   export default  {
@@ -60,25 +108,25 @@ import { required, email } from 'vuelidate/lib/validators';
     data() {
         return {
             form: {
-              username: '',
-              demoEmail: '',
-              message: ''
+              firstname: '',
+              lastname: '',
+              age: 0,
+              gender: '',
             }
         }
     },
     validations: {
-        form: {
-            username: {
-                required
-            },
-            demoEmail: {
-                required,
-                email
-            },
-            message: {
-                required
-            }
+      form: {
+        firstname: {
+          required
+        },
+        lastname: {
+          required
+        },
+        age: {
+          between: between(20, 30)
         }
+      }
     },
     watch: {
       $v: {

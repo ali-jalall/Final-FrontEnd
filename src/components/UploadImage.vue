@@ -4,6 +4,7 @@
     style="display: flex; justify-content: center;"
   >
     <vue-upload-multiple-image
+      @on:isUploaded="imageUpdated($event)"
       @upload-success="uploadImageSuccess"
       @before-remove="beforeRemove"
       @edit-image="editImage"
@@ -18,9 +19,16 @@
 import VueUploadMultipleImage from '../components/VueUploadMultipleImage'
 export default {
   name: 'UploadImage',
+  components: {
+    VueUploadMultipleImage
+  },
   props: {
-    isUploaded: {
-      type: Boolean
+    // isUploaded: {
+    //   type: Boolean
+    // }
+  },
+  data () {
+    return {
     }
   },
   watch: {
@@ -32,31 +40,21 @@ export default {
       }
     }
   },
-  components: {
-    VueUploadMultipleImage
-  },
   mounted() {
-    console.log(this.isUploaded)
-  },
-  data () {
-    return {
+    if (this.isUploaded) {
+      this.$emit('fileUploaded', { value: true })
     }
   },
   methods: {
-    uploadImageSuccess() {
-      // console.log(formData);
-      // console.log(fileList);
-      // Upload image api
-      // axios.post('http://gostore.gostore-api.test/api/items/upload', formData).then(response => {
-      //   console.log(response)
-      // })
-    },
+    uploadImageSuccess() {},
     beforeRemove (index, done) {
-      // console.log('index', index, fileList);
       const r = confirm("remove image");
       if (r == true) {
         done()
       }
+    },
+    imageUpdated (isUploaded) {
+      this.$emit('imageUploaded', { value: true })
     },
     editImage () {
       // console.log('edit data', formData, index, fileList)
