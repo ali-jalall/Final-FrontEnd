@@ -46,7 +46,10 @@ export default {
         .then(result => {
           // Assume we have Token
           console.log('Result after login: ', result);
-          // storage.setItem('X-auth', result);
+          console.log('Token: ' + result.data.faceLogIn.token)
+          localStorage.setItem('X-auth', result.data.faceLogIn.token);
+          localStorage.setItem('authenticated', true);
+          this.$router.push('/reset');
         })
         .catch(err => {
           console.log(err);
