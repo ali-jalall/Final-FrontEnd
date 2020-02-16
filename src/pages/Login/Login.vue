@@ -21,7 +21,7 @@
         title="<h3 class='mt-0'>Login to your Web App</h3>"
         custom-header
       >
-        <p class="widget-auth-nfo py-3">
+        <p class="widget-auth-nfo text-center py-3">
           Use your email to sign in.
         </p>
         <form
@@ -104,9 +104,9 @@ export default {
     };
   },
   created() {
-    if (window.localStorage.getItem('X-auth')) {
-      this.$router.push('/app/main/analytics');
-    }
+    // if (window.localStorage.getItem('X-auth')) {
+    //   this.$router.push('/app/main/analytics');
+    // }
   },
   methods: {
     login() {

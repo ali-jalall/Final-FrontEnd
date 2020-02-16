@@ -14,7 +14,6 @@ import ProbabilitiesTable from '@/pages/ProbabilitiesTable/ProbabilitiesTable'
 // Sec Charts
 // import WorldPopulation from '../pages/WorldPopulation.vue';
 
-import UserPage from '../pages/UserPage'
 
 // Maps
 // import GoogleMapPage from '@/pages/Maps/Google';
@@ -24,6 +23,8 @@ import AnalyticsPage from '@/pages/Dashboard/Dashboard';
 
 // Charts
 import Charts from '@/pages/Charts/Charts';
+
+import UserPage from '../pages/UserPage';
 
 // Ui
 // import IconsPage from '@/pages/Icons/Icons';
@@ -46,7 +47,7 @@ const routes = [
   {
     path: '/reset',
     name: 'EmailForm',
-    component: DetecingCamera,
+    component: EmailForm,
     meta: {
       guest: true
     }
@@ -58,6 +59,11 @@ const routes = [
     meta: {
       guest: true
     }
+  },
+  {
+    path: '/index',
+    name: 'UserPage',
+    component: UserPage,
   },
   // {
   //   path: '/error',
