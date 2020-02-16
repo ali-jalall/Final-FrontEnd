@@ -49,7 +49,7 @@ export default {
           console.log('Token: ' + result.data.faceLogIn.token)
           localStorage.setItem('X-auth', result.data.faceLogIn.token);
           localStorage.setItem('authenticated', true);
-          this.$router.push('/reset');
+          this.$router.push('/index');
         })
         .catch(err => {
           console.log(err);
@@ -58,6 +58,14 @@ export default {
     }
   },
   computed: {
+  },
+  beforeDestroy() {
+    video.pause();
+    video.removeAttribute('src');
+    video.srcObject.getTracks().forEach(track => {
+      track.stop();
+    });
+    clearInterval(this.refreshId);
   },
   mounted() {
     const videoSelect = this.$refs.videoSource;

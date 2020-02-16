@@ -37,6 +37,9 @@ export default {
   },
   computed: {
   },
+  beforeDestroy() {
+    this.turnCameraOff()
+  },
   mounted() {
     const videoSelect = this.$refs.videoSource;
     const video = this.$refs.video1;
