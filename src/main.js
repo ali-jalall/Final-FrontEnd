@@ -25,7 +25,7 @@ import { ApolloClient } from 'apollo-client';
 import { createUploadLink } from 'apollo-upload-client';
 import VueApollo from 'vue-apollo';
 
-import { split, ApolloLink } from 'apollo-link';
+import { split } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';

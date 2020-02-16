@@ -192,7 +192,7 @@ export default {
       }
     },
     logout() {
-      window.localStorage.setItem('authenticated', false);
+      window.localStorage.clear()
       this.$router.push('/login');
     },
   },
