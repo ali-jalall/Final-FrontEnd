@@ -1,13 +1,19 @@
 <template lang="html">
   <Widget>
-    <section class="csv-download">
-      <h3><strong>File Ready to download</strong></h3>
+    <section class="csv-download p-4 text-center">
+      <h3 class="mb-4">
+        <strong>CSV Report Download</strong>
+      </h3>
+      <label>Enter Title for your file</label>
       <input
         ref="reportFileName" 
+        class="form-control w-25 m-auto"
+        type="text"
         label="Report Name"
+        placeholder="Report file name"
       > <br>
       <button
-        class="btn btn-success"
+        class="btn btn-warning mt-2"
         @click="download"
       >
         Download
@@ -17,6 +23,7 @@
 </template>
 
 <script lang="js">
+import { GET_EMOTIONS_CSV_REPORT } from '../graphql/Queries';
 
 const _checkType = fileName => {
   for (let i = fileName.length; i >= 0; i--) {
