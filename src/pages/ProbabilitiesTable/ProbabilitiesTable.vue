@@ -50,6 +50,7 @@ import ItemsPerPageDropdown from './ProbabilitiesTableCompo/ItemsPerPageDropdown
 import Pagination from './ProbabilitiesTableCompo/Pagination'
 import orderBy from 'lodash.orderby'
 import Widget from '../../components/Widget/Widget'
+import { GET_ANALYTIC_EMOTION } from '../../graphql/Queries';
 
 const addZero = value => ("0" + value).slice(-2);
 
@@ -199,7 +200,19 @@ export default {
       hometown: null
     };
   },
+  beforeMount () {
+    this.getData();
+  },
   methods: {
+    getData:function () {
+      this.$apollo.query({
+        query: GET_ANALYTIC_EMOTION
+      })
+      .then((data) => {
+        console.log( data.data.getAnalyticEmotion)
+        this.data = data.data.getAnalyticEmotion
+      })
+    },
     dtUpdateSort: function({
       sortField,
       sort
