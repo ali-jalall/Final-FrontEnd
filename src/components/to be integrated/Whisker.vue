@@ -1,6 +1,9 @@
 <template>
-  <div id="container" style="width: 75%;">
-    <canvas ref="myCanvas"></canvas>
+  <div
+    id="container"
+    style="width: 75%;"
+  >
+    <canvas ref="myCanvas" />
   </div>
 </template>
 
@@ -47,6 +50,14 @@ export default {
       }
     }
        
+  },
+   
+  mounted() {
+    this.drawChart();
+  },
+
+  created() {
+    this.boxplotData.labels = this.emotions;
   },
 
   methods: {  
@@ -126,14 +137,6 @@ export default {
       return data[num];
     }
     
-  },
-   
-  mounted() {
-    this.drawChart();
-  },
-
-  created() {
-    this.boxplotData.labels = this.emotions;
   }
 
 }

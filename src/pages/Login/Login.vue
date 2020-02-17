@@ -85,7 +85,7 @@
       </Widget>
     </b-container>
     <footer class="auth-footer">
-      2019 &copy; Sing App Vue Admin Dashboard Template.
+      2020 &copy; The Fifth Team.
     </footer>
   </div>
 </template>

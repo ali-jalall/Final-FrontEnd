@@ -22,8 +22,8 @@
         class="chatSidebarUserGroup"
       >
         <b-list-group-item
-          v-for="emotion in emotions"
-          :key="emotion.name"
+          v-for="(emotion, index) in emotions"
+          :key="index"
           @click="(e) => openMessages(conversation, index)"
         >
           <div>
@@ -232,6 +232,7 @@ export default {
       chatMessageOpened: true,
       conversation: Object,
       searchValue: '',
+      render: false,
     };
   },
   computed: {
@@ -281,6 +282,7 @@ export default {
       subscribeToMore: {
         document: FACE_DETECTING_SUBSCRIPTIOM,
         updateQuery: (previousData, { subscriptionData }) => {
+          // this.render = true
           return {
             emotions: [
               ...previousData.emotions,

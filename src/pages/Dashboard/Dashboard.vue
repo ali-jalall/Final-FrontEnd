@@ -108,13 +108,13 @@
         </b-col>
       </b-row>
     </Widget> -->
-    <!-- <Widget>
+    <Widget>
       <b-row>
         <b-col>
           <TreeMap />
         </b-col>
       </b-row>
-    </Widget> -->
+    </Widget>
   </div>
 </template>
 
@@ -128,7 +128,7 @@ import Charts from '../../pages/Charts/Charts';
 import Whisker from '../../components/Whisker';
 import Scatter from '../../components/Scatter';
 // import CSVDownload from '../../components/CSVDownload';
-// import TreeMap from '../../components/charts/TreeMap'
+import TreeMap from '../../components/charts/TreeMap'
 // import LoginCamera from '../../components/Cameras/LoginCamera'
 // import { Chart } from 'highcharts-vue';
 
@@ -142,7 +142,7 @@ export default {
     Whisker,
     Scatter,
     // CSVDownload,
-    // TreeMap
+    TreeMap
   },
   data() {
     return {};

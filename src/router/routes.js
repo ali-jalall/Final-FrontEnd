@@ -6,6 +6,10 @@ import DetecingCamera from '../components/Cameras/DetectingCamera';
 // Core
 // import TypographyPage from '@/pages/Typography/Typography';
 
+import CSVDownload from '../components/CSVDownload';
+
+import Horizontal from '../components/HorizontalStepper/HorizontalStepper';
+
 // Tables
 import TablesBasicPage from '@/pages/Tables/Basic';
 
@@ -108,6 +112,16 @@ const routes = [
         path: 'tables',
         name: 'TablesBasicPage',
         component: TablesBasicPage,
+      },
+      {
+        path: 'adduser',
+        name: 'Horizontal',
+        component: Horizontal
+      },
+      {
+        path: 'alldata',
+        name: 'CSVDownload',
+        component: CSVDownload
       },
       // {
       //   path: 'components/maps',
