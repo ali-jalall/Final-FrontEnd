@@ -309,6 +309,12 @@ export default {
         this.$emit('can-continue', {value: true});
         this.$emit('step-completed', {value: true});
       }
+    },
+    dataImages: {
+      handler: function (newVal) {
+        this.images = newVal
+      },
+      deep: true
     }
   },
   // watch: {
