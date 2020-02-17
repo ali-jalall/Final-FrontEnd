@@ -60,6 +60,7 @@ export default {
   computed: {
   },
   beforeDestroy() {
+    const video = this.$refs.video1
     video.pause();
     video.removeAttribute('src');
     video.srcObject.getTracks().forEach(track => {
