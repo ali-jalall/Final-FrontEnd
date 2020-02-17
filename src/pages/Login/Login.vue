@@ -63,6 +63,13 @@
           >
             Login
           </b-button>
+          <div class="m-auto text-center py-2">
+            <a
+              @click="() => this.$router.push('reset')"
+            >
+              forget your password?
+            </a>
+          </div>
           <p class="widget-auth-info">
             or sign in as
           </p>

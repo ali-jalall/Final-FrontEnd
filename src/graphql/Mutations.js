@@ -70,7 +70,7 @@ export const FORGET_PASSWORD = gql`
 export const CHECK_TOKEN = gql`
   mutation checkToken($token: String!){
     checkToken(token: $token){
-        token
+      token
     }
   }
 `;

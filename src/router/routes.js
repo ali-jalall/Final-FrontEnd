@@ -57,7 +57,7 @@ const routes = [
     }
   },
   {
-    path: '/recovery',
+    path: '/recovery/:token',
     name: 'PasswordRecovery',
     component: PasswordRecovery,
     meta: {

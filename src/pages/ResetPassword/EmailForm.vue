@@ -23,6 +23,7 @@
               ref="email"
               class="form-control no-border my-3"
               required
+              value=""
               type="email"
               name="email"
               placeholder="Email"
@@ -33,7 +34,6 @@
             size="sm"
             class="auth-btn my-3"
             variant="inverse"
-            href="http://localhost:8080/#/recovery"
           >
             Reset
           </b-button>
@@ -48,6 +48,7 @@
 
 <script>
 import Widget from '@/components/Widget/Widget';
+import { FORGET_PASSWORD } from '../../graphql/Mutations'
 
 export default {
   name: 'EmailForm',
@@ -56,6 +57,20 @@ export default {
     return {};
   },
   created() {},
-  methods: {},
+  methods: {
+    login () {
+      const email = this.$refs.email.value;
+      console.log(email)
+
+      this.$apollo.mutate({
+        mutation: FORGET_PASSWORD,
+        variables: {
+          email
+        }
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+    }
+  },
 };
 </script>
