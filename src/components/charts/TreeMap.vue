@@ -101,8 +101,8 @@ export default {
 
 <style scoped>
   canvas {
-    /* max-width: 100px;
-    min-height: 100px;  */
+    max-width: 50vw;
+    max-height: 80vh; 
     margin: auto
   }
 </style>
