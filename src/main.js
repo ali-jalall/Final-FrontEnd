@@ -9,6 +9,8 @@ import Toasted from 'vue-toasted';
 import VueApexCharts from 'vue-apexcharts';
 import store from './store';
 
+import { ApolloLink, from } from 'apollo-link';
+
 import Vuelidate from 'vuelidate' 
 Vue.use(Vuelidate)
 
@@ -28,6 +30,7 @@ import VueApollo from 'vue-apollo';
 import { split } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
+import { setContext } from 'apollo-link-context';
 import { getMainDefinition } from 'apollo-utilities';
 
 Vue.config.productionTip = false
@@ -38,8 +41,27 @@ Vue.use(SweetAlertIcons);
 Vue.use(VueApollo)
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri: 'http://localhost:4000/graphql',
+  request: (operation) => {
+    const token = localStorage.getItem('X-auth');
+    operation.setContext({
+      headers: {
+        authorization: token ? token : ''
+      }
+    })
+  }
 });
+
+const authLink = new ApolloLink((operation, forward) => {
+  operation.setContext(({ headers = {} }) => ({
+    headers: {
+      ...headers,
+      authorization: localStorage.getItem('X-auth') || null,
+    }
+  }));
+
+  return forward(operation);
+})
 
 const wsLink = new WebSocketLink({
   uri: 'ws://localhost:4000/graphql',
@@ -54,7 +76,7 @@ const link = split(
     return kind === 'OperationDefinition' && operation === 'subscription'
   },
   wsLink,
-  httpLink
+  httpLink,
 )
 
 const apolloClient = new ApolloClient({
@@ -64,16 +86,21 @@ const apolloClient = new ApolloClient({
     credentials: 'include'
   },
   request: operation => {
-    if (!localStorage.token) {
-      localStorage.setItem('token', '');
+    const token = localStorage.getItem('X-auth');
+    if (!token) {
+      localStorage.setItem('X-auth', '');
     }
     operation.setContext({
       headers: {
-        authorization: localStorage.getItem('token')
+        authorization: token ? token : ''
       }
     })
   },
-  link,
+  link: from([
+    authLink,
+    createUploadLink({ uri: 'http://localhost:4000/graphql' }),
+    link
+  ]),
   onError: (e) => { console.log(e) },
   connectToDevTools: true
 })

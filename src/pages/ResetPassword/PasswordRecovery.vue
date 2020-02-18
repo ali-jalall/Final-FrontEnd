@@ -109,6 +109,7 @@ export default {
         localStorage.setItem('X-auth', data.resetPassword.token)
         localStorage.setItem('isAdmin', true)
         localStorage.setItem('authenticated', true)
+        this.$router.push('/app/dashboard');
       })
       .catch(err => {
         console.log(err);

@@ -69,11 +69,6 @@ const routes = [
     name: 'UserPage',
     component: UserPage,
   },
-  // {
-  //   path: '/error',
-  //   name: 'Error',
-  //   component: ErrorPage,
-  // },
   {
     path: '/app',
     name: 'Layout',

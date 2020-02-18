@@ -68,7 +68,9 @@ export default {
           email
         }
       })
-      .then(res => console.log(res))
+      .then(res => {
+        // TODO: show something to know email sent!
+      })
       .catch(err => console.log(err))
     }
   },

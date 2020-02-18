@@ -31,8 +31,8 @@ export const UPLOAD_USER = gql`
 `;
 
 
-export const EMOTIONS_QUERY = gql `
-  query EmotionQuery {
+export const EMOTIONS_QUERY = gql`
+  query emotions {
     emotions {
       neutral
       happy
@@ -45,7 +45,7 @@ export const EMOTIONS_QUERY = gql `
   }
 `;
 
-export const FACE_LOGIN = gql `
+export const FACE_LOGIN = gql`
   query faceLogIn ($data: [Float]) {
     faceLogIn(data: $data) {
       token
