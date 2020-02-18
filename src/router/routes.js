@@ -6,6 +6,10 @@ import DetecingCamera from '../components/Cameras/DetectingCamera';
 // Core
 // import TypographyPage from '@/pages/Typography/Typography';
 
+import CSVDownload from '../components/CSVDownload';
+
+import Horizontal from '../components/HorizontalStepper/HorizontalStepper';
+
 // Tables
 import TablesBasicPage from '@/pages/Tables/Basic';
 
@@ -53,7 +57,7 @@ const routes = [
     }
   },
   {
-    path: '/recovery',
+    path: '/recovery/:token',
     name: 'PasswordRecovery',
     component: PasswordRecovery,
     meta: {
@@ -65,11 +69,6 @@ const routes = [
     name: 'UserPage',
     component: UserPage,
   },
-  // {
-  //   path: '/error',
-  //   name: 'Error',
-  //   component: ErrorPage,
-  // },
   {
     path: '/app',
     name: 'Layout',
@@ -108,6 +107,16 @@ const routes = [
         path: 'tables',
         name: 'TablesBasicPage',
         component: TablesBasicPage,
+      },
+      {
+        path: 'adduser',
+        name: 'Horizontal',
+        component: Horizontal
+      },
+      {
+        path: 'alldata',
+        name: 'CSVDownload',
+        component: CSVDownload
       },
       // {
       //   path: 'components/maps',

@@ -103,6 +103,12 @@ const GET_ANALYTIC_EMOTION = gql`
   }
 `;
 
+const verify = gql`
+  query verfiy {
+    verfiy
+  } 
+`;
+
 // this.$apollo.query({
 //     query: GET_ANALYTIC_EMOTION
 // });
@@ -113,5 +119,6 @@ export {
   GET_PERIOD_EMOTIONS,
   FACE_LOG_IN,
   GET_EMOTION_AVERAGES_FOR_LAST_24_HOURS,
-  GET_ANALYTIC_EMOTION
+  GET_ANALYTIC_EMOTION,
+  verify
 };

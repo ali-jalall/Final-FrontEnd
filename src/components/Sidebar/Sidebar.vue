@@ -39,6 +39,20 @@
         is-header
       />
       <NavLink
+        header="Add New User"
+        link="/app/adduser"
+        icon-name="flaticon-equal-1"
+        index="adduser"
+        is-header
+      />
+      <NavLink
+        header="Download All Data"
+        link="/app/alldata"
+        icon-name="flaticon-equal-1"
+        index="alldata"
+        is-header
+      />
+      <!-- <NavLink
         :active-item="activeItem"
         header="Components"
         link="/app/components"
@@ -47,7 +61,7 @@
         :children-links="[
           { header: 'Icons', link: '/app/components/icons' },
         ]"
-      />
+      /> -->
     </ul>
   </nav>
 </template>

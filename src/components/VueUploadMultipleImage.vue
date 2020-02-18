@@ -286,13 +286,6 @@ export default {
       isFileUploaded: false
     }
   },
-  watch: {
-    deep: true,
-
-    handler () {
-      this.$emit('isFileUploaded', {value: true});
-    }
-  },
   computed: {
     imagePreview () {
       let index = findIndex(this.images, { highlight: 1 })
@@ -307,6 +300,13 @@ export default {
       if (this.images[this.currentIndexImage]) {
         return this.images[this.currentIndexImage].default
       }
+    }
+  },
+  watch: {
+    deep: true,
+
+    handler () {
+      this.$emit('isFileUploaded', {value: true});
     }
   },
   watch: {

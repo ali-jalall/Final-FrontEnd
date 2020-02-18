@@ -1,5 +1,8 @@
 <template>
-  <ul class="v-datatable-light-pagination" :class="css.paginaton">
+  <ul
+    class="v-datatable-light-pagination"
+    :class="css.paginaton"
+  >
     <li
       v-if="moveFirstPage"
       :class="[css.paginationItem, css.moveFirstPage]"

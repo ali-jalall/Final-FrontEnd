@@ -63,6 +63,13 @@
           >
             Login
           </b-button>
+          <div class="m-auto text-center py-2">
+            <a
+              @click="() => this.$router.push('reset')"
+            >
+              forget your password?
+            </a>
+          </div>
           <p class="widget-auth-info">
             or sign in as
           </p>
@@ -85,7 +92,7 @@
       </Widget>
     </b-container>
     <footer class="auth-footer">
-      2019 &copy; Sing App Vue Admin Dashboard Template.
+      2020 &copy; The Fifth Team.
     </footer>
   </div>
 </template>

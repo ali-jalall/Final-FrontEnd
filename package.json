@@ -12,6 +12,7 @@
     "apexcharts": "^3.8.6",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
+    "apollo-link-context": "^1.0.19",
     "apollo-link-error": "^1.1.12",
     "apollo-link-http": "^1.5.16",
     "apollo-link-ws": "^1.0.19",
@@ -63,7 +64,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-plugin-pwa": "^4.1.2",
+    "@vue/cli-plugin-pwa": "^4.2.2",
     "@vue/cli-service": "^4.1.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",

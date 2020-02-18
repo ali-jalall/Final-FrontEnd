@@ -75,13 +75,13 @@
         </b-col>
       </b-row>
     </div>
-    <Widget>
+    <!-- <Widget>
       <b-row>
         <b-col>
           <Horizontal />
         </b-col>
       </b-row>
-    </Widget>
+    </Widget> -->
     <b-row>
       <b-col>
         <Charts />
@@ -108,13 +108,13 @@
         </b-col>
       </b-row>
     </Widget> -->
-    <!-- <Widget>
+    <Widget>
       <b-row>
         <b-col>
           <TreeMap />
         </b-col>
       </b-row>
-    </Widget> -->
+    </Widget>
   </div>
 </template>
 
@@ -122,13 +122,14 @@
 import Widget from '@/components/Widget/Widget';
 // import UploadImage from '@/components/UploadImage';
 // import FacialDiscriptorExtractor from '@/components/FacialDiscriptorExtractor';
-import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
+// import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
 // import TimelineComponent from '../../components/TimelineComponent';
 import Charts from '../../pages/Charts/Charts';
 import Whisker from '../../components/Whisker';
 import Scatter from '../../components/Scatter';
 // import CSVDownload from '../../components/CSVDownload';
-// import TreeMap from '../../components/charts/TreeMap'
+import TreeMap from '../../components/charts/TreeMap'
+import { verify } from '../../graphql/Queries'
 // import LoginCamera from '../../components/Cameras/LoginCamera'
 // import { Chart } from 'highcharts-vue';
 
@@ -136,16 +137,28 @@ export default {
   name: 'Dashboard',
   components: {
     Widget,
-    Horizontal,
+    // Horizontal,
     // TimelineComponent
     Charts,
     Whisker,
     Scatter,
     // CSVDownload,
-    // TreeMap
+    TreeMap
   },
   data() {
     return {};
+  },
+  mounted() {
+    this.$apollo.query({
+      query: verify
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    
   },
   computed: {},
   methods: {}

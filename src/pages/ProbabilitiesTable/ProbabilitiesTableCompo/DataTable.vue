@@ -1,29 +1,58 @@
 <template>
   <table :class="['v-datatable-light', css.table]">
-    <thead :class="css.thead" :style="theadStyle">
+    <thead
+      :class="css.thead"
+      :style="theadStyle"
+    >
       <tr :class="css.theadTr">
         <th
           v-for="item in headers"
           :key="item.label"
           :class="headerItemClass(item, css.theadTh)"
           :style="getColumnWidth(item)"
+        >
+          <div
+            v-if="!isFieldSpecial(item.name) && !item.customHeader"
+            :class="css.thWrapper"
+            @click="orderBy(item.name)"
           >
-          <div v-if="!isFieldSpecial(item.name) && !item.customHeader" :class="css.thWrapper" @click="orderBy(item.name)">
             {{ item.label }}
-            <div v-if="item.sortable" :class="arrowsWrapper(item.name, css.arrowsWrapper)">
-              <div v-if="showOrderArrow(item, 'desc')" :class="css.arrowUp" />
-              <div v-if="showOrderArrow(item, 'asc')" :class="css.arrowDown" />
+            <div
+              v-if="item.sortable"
+              :class="arrowsWrapper(item.name, css.arrowsWrapper)"
+            >
+              <div
+                v-if="showOrderArrow(item, 'desc')"
+                :class="css.arrowUp"
+              />
+              <div
+                v-if="showOrderArrow(item, 'asc')"
+                :class="css.arrowDown"
+              />
             </div>
           </div>
-          <div v-if="!isFieldSpecial(item.name) && item.customHeader" :class="css.thWrapper" @click="orderBy(item.name)">
+          <div
+            v-if="!isFieldSpecial(item.name) && item.customHeader"
+            :class="css.thWrapper"
+            @click="orderBy(item.name)"
+          >
             <slot
               v-if="item.customHeader"
               :header-data="item"
               :name="customHeaderName(item)"
             />
-            <div v-if="item.sortable" :class="arrowsWrapper(item.name, css.arrowsWrapper)">
-              <div v-if="showOrderArrow(item, 'desc')" :class="css.arrowUp" />
-              <div v-if="showOrderArrow(item, 'asc')" :class="css.arrowDown" />
+            <div
+              v-if="item.sortable"
+              :class="arrowsWrapper(item.name, css.arrowsWrapper)"
+            >
+              <div
+                v-if="showOrderArrow(item, 'desc')"
+                :class="css.arrowUp"
+              />
+              <div
+                v-if="showOrderArrow(item, 'asc')"
+                :class="css.arrowDown"
+              />
             </div>
           </div>
           <div
@@ -40,21 +69,32 @@
         </th>
       </tr>
     </thead>
-    <tbody :class="css.tbody" :style="tbodyStyle">
+    <tbody
+      :class="css.tbody"
+      :style="tbodyStyle"
+    >
       <template v-if="isLoading">
         <tr :class="css.tbodyTrSpinner">
-          <td :colspan="headers.length" :class="css.tbodyTdSpinner">
-            <slot name="spinner"/>
+          <td
+            :colspan="headers.length"
+            :class="css.tbodyTdSpinner"
+          >
+            <slot name="spinner" />
           </td>
         </tr>
       </template>
       <template v-else-if="data.length">
-        <tr v-for="(item, index) in data" :key="index" :class="css.tbodyTr">
+        <tr
+          v-for="(item, index) in data"
+          :key="index"
+          :class="css.tbodyTr"
+        >
           <td
             v-for="key in headers"
             :key="`${index}-${key.name}`"
             :class="css.tbodyTd"
-            :style="getColumnWidth(key)">
+            :style="getColumnWidth(key)"
+          >
             <slot
               v-if="isFieldSpecial(key.name) && extractArgs(key.name) === 'actions'"
               :name="extractActionID(key.name)"
@@ -76,23 +116,38 @@
               :row-index="index"
               :name="customElementName(key)"
             />
-            <template v-else-if="key.format">{{ key.format(item[key.name]) }}</template>
-            <template v-else>{{ item[key.name] }}</template>
+            <template v-else-if="key.format">
+              {{ key.format(item[key.name]) }}
+            </template>
+            <template v-else>
+              {{ item[key.name] }}
+            </template>
           </td>
         </tr>
       </template>
       <template v-else>
         <tr :class="css.notFoundTr">
-          <td :colspan="headers.length" :class="css.notFoundTd">{{ notFoundMessage }}</td>
+          <td
+            :colspan="headers.length"
+            :class="css.notFoundTd"
+          >
+            {{ notFoundMessage }}
+          </td>
         </tr>
       </template>
     </tbody>
-    <tfoot v-if="hasSlots" :class="css.tfoot">
+    <tfoot
+      v-if="hasSlots"
+      :class="css.tfoot"
+    >
       <tr :class="css.tfootTr">
-        <th :colspan="headers.length" :class="css.tfootTd">
+        <th
+          :colspan="headers.length"
+          :class="css.tfootTd"
+        >
           <div :class="css.footer">
-            <slot name="ItemsPerPage"/>
-            <slot name="pagination"/>
+            <slot name="ItemsPerPage" />
+            <slot name="pagination" />
           </div>
         </th>
       </tr>

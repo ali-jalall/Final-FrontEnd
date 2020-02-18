@@ -23,7 +23,7 @@
       >
         <b-list-group-item
           v-for="emotion in emotions"
-          :key="emotion.name"
+          :key="emotion._id"
           @click="(e) => openMessages(conversation, index)"
         >
           <div>
@@ -51,8 +51,8 @@
                   <div>
                     <img
                       class="emoji"
-                      width="50px"
-                      src="/img/netural.006cc26d.png"
+                      width="38px"
+                      src="../../assets/img/neutral.svg"
                       alt=""
                     >
                     <h6 class="text-center">
@@ -68,8 +68,8 @@
                     <div>
                       <img
                         class="emoji"
-                        width="50px"
-                        src="/img/netural.006cc26d.png"
+                        width="38px"
+                        src="../../assets/img/happy.svg"
                         alt=""
                       >
                       <h6 class="text-center">
@@ -86,8 +86,8 @@
                     <div>
                       <img
                         class="emoji"
-                        width="50px"
-                        src="/img/netural.006cc26d.png"
+                        width="38px"
+                        src="../../assets/img/sad.svg"
                         alt=""
                       >
                       <h6 class="text-center">
@@ -104,8 +104,8 @@
                     <div>
                       <img
                         class="emoji"
-                        width="50px"
-                        src="/img/netural.006cc26d.png"
+                        width="38px"
+                        src="../../assets/img/angry.svg"
                         alt=""
                       >
                       <h6 class="text-center">
@@ -122,8 +122,8 @@
                     <div>
                       <img
                         class="emoji"
-                        width="50px"
-                        src="/img/netural.006cc26d.png"
+                        width="38px"
+                        src="../../assets/img/fearful.svg"
                         alt=""
                       >
                       <h6 class="text-center">
@@ -140,8 +140,8 @@
                     <div>
                       <img
                         class="emoji"
-                        width="50px"
-                        src="/img/netural.006cc26d.png"
+                        width="38px"
+                        src="../../assets/img/disgusted.svg"
                         alt=""
                       >
                       <h6 class="text-center">
@@ -158,8 +158,8 @@
                     <div>
                       <img
                         class="emoji"
-                        width="50px"
-                        src="/img/netural.006cc26d.png"
+                        width="38px"
+                        src="../../assets/img/surprised.svg"
                         alt=""
                       >
                       <h6 class="text-center">
@@ -232,6 +232,7 @@ export default {
       chatMessageOpened: true,
       conversation: Object,
       searchValue: '',
+      render: false,
     };
   },
   computed: {
@@ -240,11 +241,11 @@ export default {
   methods: {
     ...mapActions('layout', ['readMessage']),
     filterConversations(item) {
-      const isFindName = item.name.toLowerCase()
-        .indexOf(this.searchValue.toLowerCase()) !== -1;
-      const isFindMessage = item.lastMessage.toLowerCase()
-        .indexOf(this.searchValue.toLowerCase()) !== -1;
-      return isFindName || isFindMessage;
+      // const isFindName = item.name.toLowerCase()
+      //   .indexOf(this.searchValue.toLowerCase()) !== -1;
+      // const isFindMessage = item.lastMessage.toLowerCase()
+      //   .indexOf(this.searchValue.toLowerCase()) !== -1;
+      // return isFindName || isFindMessage;
     },
     handleSearchInput(value) {
       Vue.set(this, 'searchValue', value);
@@ -259,32 +260,54 @@ export default {
     },
     addMessage(e) {
       if (e.key === 'Enter' && e.target.value) {
-        const value = {
-          text: e.target.value,
-          fromMe: true,
-        };
+        // const value = {
+        //   text: e.target.value,
+        //   fromMe: true,
+        // };
 
-        Vue.set(this, 'conversation', Object.assign({}, this.conversation, {
-          messages: [
-            ...this.conversation.messages || [],
-            value,
-          ],
-        }));
+        // Vue.set(this, 'conversation', Object.assign({}, this.conversation, {
+        //   messages: [
+        //     ...this.conversation.messages || [],
+        //     value,
+        //   ],
+        // }));
 
-        e.target.value = '';
+        // e.target.value = '';
       }
     },
   },
+  // watch: {
+  //   emotions: {
+  //     deep: true,
+
+  //     handler () {
+  //       if (this.emotions.length === 0) return;
+  //       this.render = true;
+  //     }
+  //   }
+  // },
   apollo: {
     emotions: {
       query: EMOTIONS_QUERY,
       subscribeToMore: {
         document: FACE_DETECTING_SUBSCRIPTIOM,
-        updateQuery: (previousData, { subscriptionData }) => {
+        updateQuery: function (previousData, { subscriptionData }) {
+          // previousData.emotions.push({
+          //   _id: "5e4af1fa94a2b739689a260c",
+          //   neutral: 0.9990482330322266,
+          //   happy: 0.00009672110172687098,
+          //   sad: 2.7655198664433556e-7,
+          //   angry: 2.7222253606851154e-7,
+          //   fearful: 1.324585525708244e-7,
+          //   disgusted: 9.08449038217185e-10,
+          //   surprised: 0.0008544266456738114,
+          //   userId: "5e458c4f18efe23924514b58",
+          //   createdAt: "1581969855237"
+          // })
           return {
             emotions: [
+              subscriptionData.data.faceDetected,
               ...previousData.emotions,
-              subscriptionData.data.faceDetected
             ]
           }
         }
