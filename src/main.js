@@ -63,19 +63,18 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 })
 
-const wsLink = new WebSocketLink({
-  uri: 'https://guarded-fortress.herokuapp.com/graphql',
-  options: {
-    reconnect: true
-  }
-});
+// const wsLink = new WebSocketLink({
+//   uri: 'https://guarded-fortress.herokuapp.com/graphql',
+//   options: {
+//     reconnect: true
+//   }
+// });
 
 const link = split(
   ({ query }) => {
     const { kind, operation } = getMainDefinition(query);
     return kind === 'OperationDefinition' && operation === 'subscription'
   },
-  wsLink,
   httpLink,
 )
 
