@@ -6,7 +6,7 @@
   >
     <header class="logo">
       <router-link to="/app">
-        <span class="text-warning">Sing</span> App
+        <span class="text-warning">Motus</span> App
       </router-link>
     </header>
     <ul class="nav">
@@ -25,30 +25,23 @@
         is-header
       />
       <NavLink
-        header="Sec Charts"
-        link="/app/seccharts"
-        icon-name="flaticon-star"
-        index="notifications"
-        is-header
-      />
-      <NavLink
-        header="Tables Basic"
-        link="/app/tables"
-        icon-name="flaticon-equal-1"
-        index="tables"
+        header="Probabilities"
+        link="/app/probabilities"
+        icon-name="flaticon-file-2"
+        index="probabilities"
         is-header
       />
       <NavLink
         header="Add New User"
         link="/app/adduser"
-        icon-name="flaticon-equal-1"
+        icon-name="flaticon-add-1"
         index="adduser"
         is-header
       />
       <NavLink
         header="Download All Data"
         link="/app/alldata"
-        icon-name="flaticon-equal-1"
+        icon-name="flaticon-download"
         index="alldata"
         is-header
       />

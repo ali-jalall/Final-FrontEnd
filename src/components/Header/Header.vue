@@ -28,15 +28,6 @@
         </a>
       </b-nav-item>
     </b-nav>
-    <a class="navbar-brand d-md-none">
-      <i class="fa fa-circle text-gray mr-n-sm" />
-      <i class="fa fa-circle text-warning" />
-      &nbsp;
-      Motus
-      &nbsp;
-      <i class="fa fa-circle text-warning mr-n-sm" />
-      <i class="fa fa-circle text-gray" />
-    </a>
     <b-nav class="ml-auto">
         <b-dropdown-item disabled="disabled" class="pt-1">
           <span class="avatar thumb-sm float-left mr-2">

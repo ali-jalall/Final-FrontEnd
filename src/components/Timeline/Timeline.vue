@@ -1,16 +1,13 @@
 <template>
   <aside :class="{chat: true, chatOpen}">
     <header class="chatHeader">
-      <h4 class="chatTitle">
-        Contacts
+      <h4 class="chatTitle text-center">
+        Live Feed
       </h4>
-      <div class="chatSearch">
-        <b-input
-          size="sm"
-          placeholder="Search..."
-          @input="handleSearchInput"
-        />
-        <i class="fa fa-search" />
+      <div class="chatSearch text-center">
+        <strong>
+          Here's a Live feed for User's emotions
+        </strong>
       </div>
     </header>
     <div :class="{'chatPanel chatContacts': true, chatMessageOpen: chatMessageOpened}">
@@ -24,7 +21,6 @@
         <b-list-group-item
           v-for="emotion in emotions"
           :key="emotion._id"
-          @click="(e) => openMessages(conversation, index)"
         >
           <div>
             <span class="thumb-sm float-left">
@@ -181,39 +177,6 @@
           {{ conversation.name }}
         </a>
       </h6>
-      <!-- <b-list-group>
-        <b-list-group-item
-          v-for="message in conversation.messages"
-          :key="message.id"
-          :class="{fromMe: message.fromMe, 'messageItem': true}"
-        >
-          <span class="thumb-sm">
-            <img
-              v-if="message.fromMe"
-              class="rounded-circle"
-              src="../../assets/people/a5.jpg"
-              alt="..."
-            >
-            <img
-              v-else
-              class="rounded-circle"
-              :src="conversation.image"
-              alt="..."
-            >
-          </span>
-          <div class="messageBody">
-            {{ message.text }}
-          </div>
-        </b-list-group-item>
-      </b-list-group> -->
-      <!-- <footer class="chatFooter form-group">
-        <input
-          class="form-control fs-mini"
-          type="text"
-          placeholder="Type your message"
-          @keydown="addMessage"
-        >
-      </footer> -->
     </div>
   </aside>
 </template>
@@ -240,13 +203,7 @@ export default {
   },
   methods: {
     ...mapActions('layout', ['readMessage']),
-    filterConversations(item) {
-      // const isFindName = item.name.toLowerCase()
-      //   .indexOf(this.searchValue.toLowerCase()) !== -1;
-      // const isFindMessage = item.lastMessage.toLowerCase()
-      //   .indexOf(this.searchValue.toLowerCase()) !== -1;
-      // return isFindName || isFindMessage;
-    },
+    filterConversations(item) {},
     handleSearchInput(value) {
       Vue.set(this, 'searchValue', value);
     },
@@ -258,23 +215,7 @@ export default {
         this.readMessage();
       }
     },
-    addMessage(e) {
-      if (e.key === 'Enter' && e.target.value) {
-        // const value = {
-        //   text: e.target.value,
-        //   fromMe: true,
-        // };
-
-        // Vue.set(this, 'conversation', Object.assign({}, this.conversation, {
-        //   messages: [
-        //     ...this.conversation.messages || [],
-        //     value,
-        //   ],
-        // }));
-
-        // e.target.value = '';
-      }
-    },
+    addMessage(e) {},
   },
   // watch: {
   //   emotions: {
@@ -292,18 +233,18 @@ export default {
       subscribeToMore: {
         document: FACE_DETECTING_SUBSCRIPTIOM,
         updateQuery: function (previousData, { subscriptionData }) {
-          // previousData.emotions.push({
-          //   _id: "5e4af1fa94a2b739689a260c",
-          //   neutral: 0.9990482330322266,
-          //   happy: 0.00009672110172687098,
-          //   sad: 2.7655198664433556e-7,
-          //   angry: 2.7222253606851154e-7,
-          //   fearful: 1.324585525708244e-7,
-          //   disgusted: 9.08449038217185e-10,
-          //   surprised: 0.0008544266456738114,
-          //   userId: "5e458c4f18efe23924514b58",
-          //   createdAt: "1581969855237"
-          // })
+          previousData.emotions.push({
+            _id: "User",
+            neutral: 0.9990482330322266,
+            happy: 0.00009672110172687098,
+            sad: 2.7655198664433556e-7,
+            angry: 2.7222253606851154e-7,
+            fearful: 1.324585525708244e-7,
+            disgusted: 9.08449038217185e-10,
+            surprised: 0.0008544266456738114,
+            userId: "5e458c4f18efe23924514b58",
+            createdAt: "1581969855237"
+          })
           return {
             emotions: [
               subscriptionData.data.faceDetected,

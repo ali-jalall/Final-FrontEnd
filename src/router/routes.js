@@ -99,7 +99,7 @@ const routes = [
       //   component: IconsPage,
       // },
       {
-        path: 'seccharts',
+        path: 'probabilities',
         name: 'ProbabilitiesTable',
         component: ProbabilitiesTable
       },
