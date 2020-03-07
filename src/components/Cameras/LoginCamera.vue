@@ -48,7 +48,7 @@ export default {
           // Assume we have Token
           console.log('Result after login: ', result);
           console.log('Token: ' + result.data.faceLogIn.token)
-          localStoragesetItem('X-auth', result.data.faceLogIn.token);
+          localStorage.setItem('X-auth', result.data.faceLogIn.token);
           localStorage.setItem('authenticated', true);
           this.$router.push('/index');
         })
