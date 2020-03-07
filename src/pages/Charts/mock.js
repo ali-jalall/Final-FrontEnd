@@ -25,7 +25,7 @@ export const chartData = {
           enabled: false,
         },
         xaxis: {
-          categories: ['John', 'Joe', 'Jake', 'Amber', 'Peter', 'Mary', 'David', 'Lily'],
+          categories: ['Neutral', 'Happy', 'Sad', 'Angry', 'Surprised', 'disgusted', 'Fearful', 'Bored'],
           labels: {
             style: {
               colors: columnColors,
@@ -71,11 +71,11 @@ export const chartData = {
             }
           },
           data: [
-            {value: 335, name: 'Direct interview'},
-            {value: 310, name: 'Email marketing'},
-            {value: 234, name: 'Alliance advertising'},
-            {value: 135, name: 'Video ad'},
-            {value: 1548, name: 'Search engine'}
+            {value: 335, name: 'Neutral'},
+            {value: 310, name: 'Angry'},
+            {value: 234, name: 'Fearful'},
+            {value: 135, name: 'Happy'},
+            {value: 1548, name: 'Sad'}
           ]
         }
       ]

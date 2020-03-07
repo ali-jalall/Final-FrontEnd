@@ -88,25 +88,10 @@ const routes = [
         name: 'Charts',
         component: Charts,
       },
-      // {
-      //   path: 'typography',
-      //   name: 'TypographyPage',
-      //   component: TypographyPage,
-      // },
-      // {
-      //   path: 'components/icons',
-      //   name: 'IconsPage',
-      //   component: IconsPage,
-      // },
       {
         path: 'probabilities',
         name: 'ProbabilitiesTable',
         component: ProbabilitiesTable
-      },
-      {
-        path: 'tables',
-        name: 'TablesBasicPage',
-        component: TablesBasicPage,
       },
       {
         path: 'adduser',
@@ -118,11 +103,6 @@ const routes = [
         name: 'CSVDownload',
         component: CSVDownload
       },
-      // {
-      //   path: 'components/maps',
-      //   name: 'GoogleMapPage',
-      //   component: GoogleMapPage,
-      // },
     ],
   },
 ]

@@ -3,7 +3,7 @@
     <b-container>
       <h5 class="auth-logo">
         <i class="fa fa-circle text-gray" />
-        Sing App
+        Motus App
         <i class="fa fa-circle text-warning" />
       </h5>
       <Widget
@@ -41,7 +41,7 @@
       </Widget>
     </b-container>
     <footer class="auth-footer">
-      2019 &copy; The Fifth Team rbktn-01.
+      2020 &copy; The Fifth Team rbktn-01.
     </footer>
   </div>
 </template>

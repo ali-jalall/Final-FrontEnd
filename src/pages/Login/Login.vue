@@ -3,7 +3,7 @@
     <b-container>
       <h5 class="auth-logo">
         <i class="fa fa-circle text-gray" />
-        Sing App
+        Motus App
         <i class="fa fa-circle text-warning" />
       </h5>
 
@@ -110,11 +110,7 @@ export default {
       errorMessage: null,
     };
   },
-  created() {
-    // if (window.localStorage.getItem('X-auth')) {
-    //   this.$router.push('/app/main/analytics');
-    // }
-  },
+  created() {},
   methods: {
     login() {
       const email = this.$refs.email.value;
@@ -134,14 +130,9 @@ export default {
         this.$router.push('/app/dashboard');
       })
       .catch(err => {
+        this.errorMessage = 'Please Enter Valid Data'
         console.log(err)
       })
-
-
-      // if (email.length !== 0 && password.length !== 0) {
-      //   window.localStorage.setItem('authenticated', true);
-      //   this.$router.push('/app/dashboard');
-      // }
     },
   },
 };

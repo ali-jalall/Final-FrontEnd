@@ -28,7 +28,8 @@ export default {
     return {
       detections: null,
       refreshId: null,
-      descriptors: []
+      descriptors: [],
+      errorMessage: null,
     }
   },
   watch: {
@@ -52,6 +53,7 @@ export default {
           this.$router.push('/index');
         })
         .catch(err => {
+          this.errorMessage = 'User UnRecognized!'
           console.log(err);
         })
       }

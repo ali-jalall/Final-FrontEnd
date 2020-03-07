@@ -77,7 +77,7 @@
             },
             // Executed when @stepper-finished event is triggered
             alert(payload) {
-                alert('end')
+                alert('User Added !')
             }
         }
     }
