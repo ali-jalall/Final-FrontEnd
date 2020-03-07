@@ -27,95 +27,32 @@
           <i class="la la-bars la-lg d-sm-down-none ml-4" />
         </a>
       </b-nav-item>
-      <b-nav-item class="d-md-down-none">
-        <a
-          href="#"
-          class="px-2"
-        >
-          <i class="la la-refresh la-lg" />
-        </a>
-      </b-nav-item>
-      <b-nav-item class="d-md-down-none">
-        <a
-          href="#"
-          class="px-2"
-        >
-          <i class="la la-times la-lg" />
-        </a>
-      </b-nav-item>
-    </b-nav>
-    <b-nav>
-      <b-form
-        class="d-sm-down-none ml-5"
-        inline
-      >
-        <b-form-group>
-          <b-input-group class="input-group-no-border">
-            <div class="input-group-addon d-flex align-items-center">
-              <i class="la la-search px-3" />
-            </div>
-            <b-input
-              id="search-input"
-              placeholder="Search Dashboard"
-            />
-          </b-input-group>
-        </b-form-group>
-      </b-form>
     </b-nav>
     <a class="navbar-brand d-md-none">
       <i class="fa fa-circle text-gray mr-n-sm" />
       <i class="fa fa-circle text-warning" />
       &nbsp;
-      sing
+      Motus
       &nbsp;
       <i class="fa fa-circle text-warning mr-n-sm" />
       <i class="fa fa-circle text-gray" />
     </a>
     <b-nav class="ml-auto">
-      <b-nav-item-dropdown
-        id="basic-nav-dropdown"
-        class="notifications-menu d-sm-down-none mr-2"
-        extra-menu-classes="notifications-wrapper py-0 animated animated-fast fadeInUp"
-        right
-      >
-        <template slot="button-content">
+        <b-dropdown-item disabled="disabled" class="pt-1">
           <span class="avatar thumb-sm float-left mr-2">
             <img
               class="rounded-circle"
-              src="../../assets/people/a5.jpg"
+              src="../../assets/people/user.png"
               alt="..."
             >
           </span>
-          <span class="small">Philip <span class="fw-semi-bold">Smith</span></span>
-          <span class="ml-1 circle bg-warning text-white fw-bold">13</span>
-        </template>
-        <Notifications />
-      </b-nav-item-dropdown>
-      <b-nav-item-dropdown
-        class="settings-dropdown d-sm-down-none"
-        no-caret
-        right
-      >
-        <template slot="button-content">
-          <i class="la la-cog px-2" />
-        </template>
-        <b-dropdown-item><i class="la la-user" /> My Account</b-dropdown-item>
-        <b-dropdown-divider />
-        <b-dropdown-item>Calendar</b-dropdown-item>
-        <b-dropdown-item>
-          Inbox &nbsp;&nbsp;<b-badge
-            variant="danger"
-            pill
-            class="animated bounceIn"
-          >
-            9
-          </b-badge>
+          <div class="pt-2 px-4">
+          <span class="medium">Control <span class="fw-semi-bold">Pannel</span></span>
+          </div>
         </b-dropdown-item>
-        <b-dropdown-divider />
-        <b-dropdown-item-button @click="logout">
-          <i class="la la-sign-out" /> Log Out
-        </b-dropdown-item-button>
-      </b-nav-item-dropdown>
+      <b-dropdown-item-button @click="logout">
+        <i class="la la-sign-out" style="padding-top: 5.7px; font-size: 20pt;" />
+      </b-dropdown-item-button>
       <b-nav-item>
         <a
           id="toggle-chat"
@@ -129,21 +66,6 @@
           v-if="chatNotificationIcon"
           class="chat-notification-sing animated bounceIn"
         />
-        <!-- <div id="chat-notification" class="chat-notification" :class="{'notification-hidden': !chatNotificationPopover}">
-          <div class="chat-notification-inner">
-            <h6 class="title d-flex text-white">
-              <span class="thumb-xs">
-                <img src="../../assets/people/a6.jpg" alt=""
-                  class="rounded-circle mr-xs float-left" />
-              </span>
-              Jess Smith
-            </h6>
-             <p class="text">
-              Hi there! <br /> This is a completely new version of Sing App <br />
-              built with <strong class="text-primary">Vue</strong>
-            </p>
-          </div>
-        </div> -->
       </b-nav-item>
       <b-nav-item class="fs-lg d-md-none">
         <a
@@ -159,11 +81,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import Notifications from '../Notifications/Notifications';
 
 export default {
   name: 'Header',
-  components: { Notifications },
+  components: {  },
   computed: {
     ...mapState('layout', ['sidebarClose', 'sidebarStatic', 'chatNotificationIcon', 'chatNotificationPopover']),
   },

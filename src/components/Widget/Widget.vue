@@ -151,11 +151,9 @@
 </template>
 
 <script>
-import Loader from '../Loader/Loader';
 
 export default {
   name: 'Widget',
-  components: { Loader },
   props: {
     customHeader: { type: Boolean, default: false },
     tooltipPlacement: { default: 'top' },
