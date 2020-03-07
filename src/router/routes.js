@@ -1,26 +1,12 @@
 import Layout from '../components/Layout/Layout'
 import Login from '@/pages/Login/Login';
 
-import DetecingCamera from '../components/Cameras/DetectingCamera';
-// import ErrorPage from '@/pages/Error/Error';
-// Core
-// import TypographyPage from '@/pages/Typography/Typography';
 
 import CSVDownload from '../components/CSVDownload';
 
 import Horizontal from '../components/HorizontalStepper/HorizontalStepper';
 
-// Tables
-import TablesBasicPage from '@/pages/Tables/Basic';
-
 import ProbabilitiesTable from '@/pages/ProbabilitiesTable/ProbabilitiesTable'
-
-// Sec Charts
-// import WorldPopulation from '../pages/WorldPopulation.vue';
-
-
-// Maps
-// import GoogleMapPage from '@/pages/Maps/Google';
 
 // Main
 import AnalyticsPage from '@/pages/Dashboard/Dashboard';
@@ -28,16 +14,12 @@ import AnalyticsPage from '@/pages/Dashboard/Dashboard';
 // Charts
 import Charts from '@/pages/Charts/Charts';
 
-import UserPage from '../pages/UserPage';
-
-// Ui
-// import IconsPage from '@/pages/Icons/Icons';
-// import NotificationsPage from '@/pages/Notifications/Notifications';
+import UserPage from '@/pages/UserPage';
 
 import EmailForm from '@/pages/ResetPassword/EmailForm'
+
 import PasswordRecovery from '@/pages/ResetPassword/PasswordRecovery'
 
-// import LoginCamera from '../components/Cameras/LoginCamera'
 
 const routes = [
   {

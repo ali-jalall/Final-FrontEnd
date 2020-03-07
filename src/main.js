@@ -41,7 +41,7 @@ Vue.use(SweetAlertIcons);
 Vue.use(VueApollo)
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://guarded-fortress.herokuapp.com/graphql',
   request: (operation) => {
     const token = localStorage.getItem('X-auth');
     operation.setContext({
@@ -64,7 +64,7 @@ const authLink = new ApolloLink((operation, forward) => {
 })
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost:4000/graphql',
+  uri: 'https://guarded-fortress.herokuapp.com/graphql',
   options: {
     reconnect: true
   }
@@ -98,7 +98,7 @@ const apolloClient = new ApolloClient({
   },
   link: from([
     authLink,
-    createUploadLink({ uri: 'http://localhost:4000/graphql' }),
+    createUploadLink({ uri: 'https://guarded-fortress.herokuapp.com/graphql' }),
     link
   ]),
   onError: (e) => { console.log(e) },
