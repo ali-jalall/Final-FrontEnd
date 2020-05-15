@@ -55,10 +55,10 @@ const routes = [
     path: '/app',
     name: 'Layout',
     component: Layout,
-    meta: {
-      requiresAuth: true,
-      isAdmin: true
-    },
+    // meta: {
+    //   requiresAuth: true,
+    //   isAdmin: true
+    // },
     children: [
       {
         path: 'dashboard',

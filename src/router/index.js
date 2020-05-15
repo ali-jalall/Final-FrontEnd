@@ -1,11 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import routes from "./routes";
+import { active } from "d3";
 Vue.use(VueRouter);
 
 // configure router
 const router = new VueRouter({
-  routes
+  routes,
+  linkActiveClass: active
 });
 
 
